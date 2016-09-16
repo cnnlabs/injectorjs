@@ -13,7 +13,7 @@
 
 (function (ns) {
     'use strict';
-    var chunks = CNN.WebpackAssets,
+    var chunks = ns.WebpackAssets,
         features = {},
         nsFeatures = {},
         getDeferredFeature,
@@ -32,7 +32,7 @@
      */
 
     createDeferredForFeature = function (feature, video) {
-        var url = CNN.INJECTOR.getUrlForFeatureName(feature, video);
+        var url = ns.INJECTOR.getUrlForFeatureName(feature, video);
         if (url === '') {
             features[feature] = jQuery.Deferred();
             features[feature].reject({isLoaded: false, exists:false});
@@ -97,7 +97,7 @@
         var loadFeature = function () {
             jQuery('[data-cnn-resource]').each(function (idx, el) {
                 var resource = jQuery(el).data().cnnResource;
-                CNN.INJECTOR.loadFeature(resource);
+                ns.INJECTOR.loadFeature(resource);
             });
         };
         /* onZonesAndDomReady is applicable when zones are not dynamically loaded */
@@ -106,7 +106,7 @@
         jQuery(document).onZoneRendered(loadFeature);
     };
 
-    CNN.INJECTOR = CNN.INJECTOR || {};
+    ns.INJECTOR = ns.INJECTOR || {};
 
     /* Sets up default libraries */
     features.header1 = jQuery.Deferred();
@@ -124,7 +124,7 @@
      * @param {boolean} video - Indicate that the URL needs decorated.
      * @return {string} url - URL to the feature's bundle
      */
-    CNN.INJECTOR.getUrlForFeatureName = function (feature, video) {
+    ns.INJECTOR.getUrlForFeatureName = function (feature, video) {
         var url = '',
             i = 0,
             j = 0,
@@ -135,7 +135,7 @@
             chunkNames = features.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
-                    url = '@@cdn.assetHost@@cdn.assetPath/bundles/' + features.name;
+                    url = ns.bundleHost + features.name;
                     if (video) {
                         url = url + '?version=latest&client=expansion';
                     }
@@ -152,10 +152,10 @@
      * @return {object} promise - A promise resolved when the feature is loaded.
      * note: videos always need to the library executed.
      */
-    CNN.INJECTOR.loadFeature = function (feature) {
+    ns.INJECTOR.loadFeature = function (feature) {
         var video = false,
             deferredFeature = getDeferredFeature(feature),
-            url = CNN.INJECTOR.getUrlForFeatureName(feature, video);
+            url = ns.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = createDeferredForFeature(feature, video);
@@ -175,9 +175,9 @@
      * @return {object} promise - A promise progress when the feature is loaded.
      */
 
-    CNN.INJECTOR.executeFeature = function (feature, video) {
+    ns.INJECTOR.executeFeature = function (feature, video) {
         var deferredFeature = getDeferredFeature(feature),
-            url = CNN.INJECTOR.getUrlForFeatureName(feature, video);
+            url = ns.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = createDeferredForFeature(feature, video);
@@ -195,7 +195,7 @@
      * Sets a feature to resolved.  Typically used in conjuction with execute.
      * @param {string} feature - The name of the feature.
      */
-    CNN.INJECTOR.scriptComplete = function (feature) {
+    ns.INJECTOR.scriptComplete = function (feature) {
         features[feature].resolve({isLoaded: true, exists:true, executed:true});
     };
 
@@ -203,7 +203,7 @@
      * Creates a new deferred object for a namespace (ie CNN.VideoPlayer.addVideo) feature.
      * @param {string} feature - The name of the feature.
      */
-    CNN.INJECTOR.resetNameSpaceFeature = function (feature) {
+    ns.INJECTOR.resetNameSpaceFeature = function (feature) {
         nsFeatures[feature] = jQuery.Deferred();
     };
 
@@ -212,7 +212,7 @@
      * @param {string} feature - The name of the feature.
      * @return {object} promise - A promise resolved when the feature is loaded.
      */
-    CNN.INJECTOR.getNameSpaceFeature = function (feature) {
+    ns.INJECTOR.getNameSpaceFeature = function (feature) {
         var featureList = feature.split('.'),
             obj = window,
             definedObj = true,
