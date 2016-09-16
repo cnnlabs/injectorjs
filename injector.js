@@ -1,5 +1,5 @@
 /* jshint browser: true, node: false */
-/* global CNN, jQuery */
+/* global jQuery */
 
 /*
  * CNN Service Injector - Takes libraries names and memory namespaces and
@@ -11,7 +11,7 @@
  *
  */
 
-(function () {
+(function (ns) {
     'use strict';
     var chunks = CNN.WebpackAssets,
         features = {},
@@ -238,4 +238,4 @@
         }
         return promise;
     };
-})();
+})(namespace);
