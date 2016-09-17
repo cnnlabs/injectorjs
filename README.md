@@ -1,11 +1,11 @@
 # Injectorjs
 
-A client library that injects javacript bundles into the DOM.
+A client library that injects javascript bundles into the DOM.
 
 ## Requirements
 
-jquery 1.12.3
-the client must define `window.NS.bundleHost`
+- jquery 1.12.3
+- the client must define `window.NS.bundleHost`
 
 ## Installation
 
