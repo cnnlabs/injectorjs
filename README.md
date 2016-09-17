@@ -23,4 +23,3 @@ Download the [latest](https://github.com/cnnlabs/injectorjs/archive/master.zip
 
 1. Run your favorite static server
 2. Load /example/index.html
-3. See Navigation Timing and DOMContentLoaded output
