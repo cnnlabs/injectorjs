@@ -12,9 +12,9 @@
  */
 window.NS = window.NS || {};
 
-(function (ns, jQuery) {
+(function (NS, jQuery) {
     'use strict';
-    var chunks = ns.WebpackAssets,
+    var chunks = NS.WebpackAssets,
         features = {},
         nsFeatures = {},
         getDeferredFeature,
@@ -33,7 +33,7 @@ window.NS = window.NS || {};
      */
 
     createDeferredForFeature = function (feature, video) {
-        var url = ns.INJECTOR.getUrlForFeatureName(feature, video);
+        var url = NS.INJECTOR.getUrlForFeatureName(feature, video);
         if (url === '') {
             features[feature] = jQuery.Deferred();
             features[feature].reject({isLoaded: false, exists:false});
@@ -98,7 +98,7 @@ window.NS = window.NS || {};
         var loadFeature = function () {
             jQuery('[data-cnn-resource]').each(function (idx, el) {
                 var resource = jQuery(el).data().cnnResource;
-                ns.INJECTOR.loadFeature(resource);
+                NS.INJECTOR.loadFeature(resource);
             });
         };
         /* onZonesAndDomReady is applicable when zones are not dynamically loaded */
@@ -107,7 +107,7 @@ window.NS = window.NS || {};
         jQuery(document).onZoneRendered(loadFeature);
     };
 
-    ns.INJECTOR = ns.INJECTOR || {};
+    NS.INJECTOR = NS.INJECTOR || {};
 
     /* Sets up default libraries */
     features.header1 = jQuery.Deferred();
@@ -125,7 +125,7 @@ window.NS = window.NS || {};
      * @param {boolean} video - Indicate that the URL needs decorated.
      * @return {string} url - URL to the feature's bundle
      */
-    ns.INJECTOR.getUrlForFeatureName = function (feature, video) {
+    NS.INJECTOR.getUrlForFeatureName = function (feature, video) {
         var url = '',
             i = 0,
             j = 0,
@@ -136,7 +136,7 @@ window.NS = window.NS || {};
             chunkNames = features.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
-                    url = ns.bundleHost + features.name;
+                    url = NS.bundleHost + features.name;
                     if (video) {
                         url = url + '?version=latest&client=expansion';
                     }
@@ -153,10 +153,10 @@ window.NS = window.NS || {};
      * @return {object} promise - A promise resolved when the feature is loaded.
      * note: videos always need to the library executed.
      */
-    ns.INJECTOR.loadFeature = function (feature) {
+    NS.INJECTOR.loadFeature = function (feature) {
         var video = false,
             deferredFeature = getDeferredFeature(feature),
-            url = ns.INJECTOR.getUrlForFeatureName(feature, video);
+            url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = createDeferredForFeature(feature, video);
@@ -176,9 +176,9 @@ window.NS = window.NS || {};
      * @return {object} promise - A promise progress when the feature is loaded.
      */
 
-    ns.INJECTOR.executeFeature = function (feature, video) {
+    NS.INJECTOR.executeFeature = function (feature, video) {
         var deferredFeature = getDeferredFeature(feature),
-            url = ns.INJECTOR.getUrlForFeatureName(feature, video);
+            url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = createDeferredForFeature(feature, video);
@@ -196,7 +196,7 @@ window.NS = window.NS || {};
      * Sets a feature to resolved.  Typically used in conjuction with execute.
      * @param {string} feature - The name of the feature.
      */
-    ns.INJECTOR.scriptComplete = function (feature) {
+    NS.INJECTOR.scriptComplete = function (feature) {
         features[feature].resolve({isLoaded: true, exists:true, executed:true});
     };
 
@@ -204,7 +204,7 @@ window.NS = window.NS || {};
      * Creates a new deferred object for a namespace (ie CNN.VideoPlayer.addVideo) feature.
      * @param {string} feature - The name of the feature.
      */
-    ns.INJECTOR.resetNameSpaceFeature = function (feature) {
+    NS.INJECTOR.resetNameSpaceFeature = function (feature) {
         nsFeatures[feature] = jQuery.Deferred();
     };
 
@@ -213,7 +213,7 @@ window.NS = window.NS || {};
      * @param {string} feature - The name of the feature.
      * @return {object} promise - A promise resolved when the feature is loaded.
      */
-    ns.INJECTOR.getNameSpaceFeature = function (feature) {
+    NS.INJECTOR.getNameSpaceFeature = function (feature) {
         var featureList = feature.split('.'),
             obj = window,
             definedObj = true,
