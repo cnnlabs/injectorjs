@@ -12,7 +12,7 @@
  */
 window.NS = window.NS || {};
 
-(function (ns) {
+(function (ns, jQuery) {
     'use strict';
     var chunks = ns.WebpackAssets,
         features = {},
@@ -239,4 +239,4 @@ window.NS = window.NS || {};
         }
         return promise;
     };
-})(window.NS);
+})(window.NS, jQuery);
