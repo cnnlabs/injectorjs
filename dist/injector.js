@@ -2,7 +2,7 @@
 /* global jQuery */
 
 /*
- * CNN Service Injector - Takes libraries names and memory namespaces and
+ * Service Injector - Takes libraries names and memory namespaces and
  * returns are promise for them. This file is included in the header.
  *
  * There are a lot of dependencies in the application.  This function returns
@@ -10,6 +10,7 @@
  *
  *
  */
+window.NS = window.NS || {};
 
 (function (ns) {
     'use strict';
@@ -238,4 +239,4 @@
         }
         return promise;
     };
-})(namespace);
+})(window.NS);
