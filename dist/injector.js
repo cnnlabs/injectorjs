@@ -122,7 +122,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     
     NS.INJECTOR.registerEvents = function (events) {
         for(var i = 0; i < events.length; i++ ) {
-            jQuery(document)[events[i]](loadFeature);
+            jQuery(document)[events[i]](dataTagsHandler);
         }    
     }
     
