@@ -11,7 +11,7 @@
  *
  */
 window.NS = window.NS || {};
-window.NS.bundleHost = window.NS.bundleHost || '/'
+window.NS.bundleHost = window.NS.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
