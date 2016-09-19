@@ -24,7 +24,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        dataTagsHandler;
+        loadFeature;
 
     /**
      * Creates a deferred object for a given feature name.
@@ -94,14 +94,12 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-
-    dataTagsHandler = function () {
-        var loadFeature = function () {
-            jQuery('[data-cnn-resource]').each(function (idx, el) {
-                var resource = jQuery(el).data().cnnResource;
-                NS.INJECTOR.loadFeature(resource);
-            });
-        };
+    
+    loadFeature = function () {
+        jQuery('[data-cnn-resource]').each(function (idx, el) {
+            var resource = jQuery(el).data().cnnResource;
+            NS.INJECTOR.loadFeature(resource);
+        });
     };
     
     NS.INJECTOR = NS.INJECTOR || {};
@@ -110,7 +108,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     features.header1 = jQuery.Deferred();
     features.header2 = jQuery.Deferred();
     features.footer = jQuery.Deferred();
-    features.footer.done(dataTagsHandler);
+    features.footer.done(loadFeature);
 
     /* Assumes the header library has been synchronously loaded */
     features.header1.resolve({isLoaded: true});
@@ -122,7 +120,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     
     NS.INJECTOR.registerEvents = function (events) {
         for(var i = 0; i < events.length; i++ ) {
-            jQuery(document)[events[i]](dataTagsHandler);
+            features.footer.done(jQuery(document)[events[i]](loadFeature));
         }    
     }
     
