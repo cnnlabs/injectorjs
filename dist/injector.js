@@ -102,12 +102,8 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
                 NS.INJECTOR.loadFeature(resource);
             });
         };
-        /* onZonesAndDomReady is applicable when zones are not dynamically loaded */
-        jQuery(document).onZonesAndDomReady(loadFeature);
-        /* onZoneRendered is so the browser requests features faster when zone loading is on */
-        jQuery(document).onZoneRendered(loadFeature);
     };
-
+    
     NS.INJECTOR = NS.INJECTOR || {};
 
     /* Sets up default libraries */
@@ -118,7 +114,18 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
 
     /* Assumes the header library has been synchronously loaded */
     features.header1.resolve({isLoaded: true});
-
+    
+    /**
+    * Sets the loadFeature function to an array of evenListeners
+    * @params {array} events - Array of event listeners to set
+    */
+    
+    NS.INJECTOR.registerEvents = function (events) {
+        for(var i = 0; i < events.length; i++ ) {
+            jQuery(document)[events[i]](loadFeature);
+        }    
+    }
+    
     /**
      * Inspects the webpack chunkNames to determine if there is a registered
      * feature and returns the URL to that feature if there is one.
