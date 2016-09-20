@@ -10,7 +10,7 @@
  *
  *
  */
-window.FAI = window.NS || {};
+window.FAI = window.FAI || {};
 window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
