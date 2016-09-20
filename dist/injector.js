@@ -104,11 +104,6 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     
     NS.INJECTOR = NS.INJECTOR || {};
 
-    /* Sets up default libraries */
-    features.header1 = jQuery.Deferred();
-    features.header2 = jQuery.Deferred();
-    features.footer = jQuery.Deferred();
-
     /* Assumes the header library has been synchronously loaded */
     features.header1.resolve({isLoaded: true});
     
