@@ -10,8 +10,8 @@
  *
  *
  */
-window.NS = window.NS || {};
-window.NS.bundleHost = window.NS.bundleHost || '/';
+window.FAI = window.FAI || {};
+window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
@@ -19,30 +19,11 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         features = {},
         nsFeatures = {},
         getDeferredFeature,
-        createDeferredForFeature,
         featureLoadFail,
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        dataTagsHandler;
-
-    /**
-     * Creates a deferred object for a given feature name.
-     * @param {string} feature - The name of the feature.
-     * @param {boolean} video - Indicate that the URL needs decorated.
-     * @return {object} featurs[feature] - A deferred object.
-     */
-
-    createDeferredForFeature = function (feature, video) {
-        var url = NS.INJECTOR.getUrlForFeatureName(feature, video);
-        if (url === '') {
-            features[feature] = jQuery.Deferred();
-            features[feature].reject({isLoaded: false, exists:false});
-        } else {
-            features[feature] = jQuery.Deferred();
-        }
-        return features[feature];
-    };
+        loadFeature;
 
     /**
      * Returns a deferred object for a given feature name.
@@ -94,30 +75,38 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-
-    dataTagsHandler = function () {
-        var loadFeature = function () {
-            jQuery('[data-cnn-resource]').each(function (idx, el) {
-                var resource = jQuery(el).data().cnnResource;
-                NS.INJECTOR.loadFeature(resource);
-            });
-        };
-        /* onZonesAndDomReady is applicable when zones are not dynamically loaded */
-        jQuery(document).onZonesAndDomReady(loadFeature);
-        /* onZoneRendered is so the browser requests features faster when zone loading is on */
-        jQuery(document).onZoneRendered(loadFeature);
+    
+    loadFeature = function () {
+        jQuery('[data-cnn-resource]').each(function (idx, el) {
+            var resource = jQuery(el).data().cnnResource;
+            NS.INJECTOR.loadFeature(resource);
+        });
     };
-
+    
     NS.INJECTOR = NS.INJECTOR || {};
+    
+    /**
+     * Creates a deferred object for a given feature name.
+     * @param {string} feature - The name of the feature.
+     * @param {boolean} video - Indicate that the URL needs decorated.
+     * @return {object} featurs[feature] - A deferred object.
+     */
 
-    /* Sets up default libraries */
-    features.header1 = jQuery.Deferred();
-    features.header2 = jQuery.Deferred();
-    features.footer = jQuery.Deferred();
-    features.footer.done(dataTagsHandler);
-
-    /* Assumes the header library has been synchronously loaded */
-    features.header1.resolve({isLoaded: true});
+    NS.INJECTOR.createDeferredForFeature = function (feature) {
+        features[feature] = jQuery.Deferred();
+        return features[feature];
+    };
+    
+    /**
+    * Sets the loadFeature function to an array of evenListeners
+    * @param {array} events - Array of event listeners to set
+    */
+    
+    NS.INJECTOR.registerEvents = function (events) {
+        for(var i = 0; i < events.length; i++ ) {
+            features.footer.done(jQuery(document)[events[i]](loadFeature));
+        }    
+    }
 
     /**
      * Inspects the webpack chunkNames to determine if there is a registered
@@ -160,7 +149,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
                 jQuery.ajax({dataType: 'script', cache: true, url: url})
                 .done(jQuery.proxy(featureLoadSuccess, null, deferredFeature))
@@ -182,7 +171,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
                 jQuery
                 .ajax({dataType: 'script', cache: true, url: url})
@@ -240,4 +229,4 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         }
         return promise;
     };
-})(window.NS, jQuery);
+})(window.FAI, jQuery);
