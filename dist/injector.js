@@ -92,7 +92,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
      * @return {object} featurs[feature] - A deferred object.
      */
 
-    NS.INJECTOR.createDeferredForFeature = function (feature, video) {
+    NS.INJECTOR.createDeferredForFeature = function (feature) {
         features[feature] = jQuery.Deferred();
         return features[feature];
     };
