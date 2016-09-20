@@ -108,14 +108,13 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     features.header1 = jQuery.Deferred();
     features.header2 = jQuery.Deferred();
     features.footer = jQuery.Deferred();
-    features.footer.done(loadFeature);
 
     /* Assumes the header library has been synchronously loaded */
     features.header1.resolve({isLoaded: true});
     
     /**
     * Sets the loadFeature function to an array of evenListeners
-    * @params {array} events - Array of event listeners to set
+    * @param {array} events - Array of event listeners to set
     */
     
     NS.INJECTOR.registerEvents = function (events) {
@@ -123,7 +122,16 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             features.footer.done(jQuery(document)[events[i]](loadFeature));
         }    
     }
+    /**
+    * sets default libraries
+    * @param {array} libraries - Array of default libraries
+    */
     
+    NS.INJECTOR.setDefaultLibraries = function(libraries) {
+        for(var i; i < libraries.length; i++) {
+            features[libraries[i]] = jQuery.Deferred();
+        }
+    }
     /**
      * Inspects the webpack chunkNames to determine if there is a registered
      * feature and returns the URL to that feature if there is one.
