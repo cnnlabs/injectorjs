@@ -6,6 +6,7 @@ A client library that injects javascript bundles into the DOM.
 
 - jquery 1.12.3
 - the client must define `window.FAI.bundleHost`
+- the client must define 'window.FAI.WebpackAssets'
 
 ## Installation
 
