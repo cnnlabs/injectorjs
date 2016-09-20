@@ -77,7 +77,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
      */
     
     loadFeature = function () {
-        jQuery('[data-cnn-resource]').each(function (idx, el) {
+        jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().cnnResource;
             NS.INJECTOR.loadFeature(resource);
         });
