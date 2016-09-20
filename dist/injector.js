@@ -93,13 +93,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
      */
 
     NS.INJECTOR.createDeferredForFeature = function (feature, video) {
-        var url = NS.INJECTOR.getUrlForFeatureName(feature, video);
-        if (url === '') {
-            features[feature] = jQuery.Deferred();
-            features[feature].reject({isLoaded: false, exists:false});
-        } else {
-            features[feature] = jQuery.Deferred();
-        }
+        features[feature] = jQuery.Deferred();
         return features[feature];
     };
     
