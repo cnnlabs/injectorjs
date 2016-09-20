@@ -19,30 +19,11 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         features = {},
         nsFeatures = {},
         getDeferredFeature,
-        createDeferredForFeature,
         featureLoadFail,
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
         loadFeature;
-
-    /**
-     * Creates a deferred object for a given feature name.
-     * @param {string} feature - The name of the feature.
-     * @param {boolean} video - Indicate that the URL needs decorated.
-     * @return {object} featurs[feature] - A deferred object.
-     */
-
-    createDeferredForFeature = function (feature, video) {
-        var url = NS.INJECTOR.getUrlForFeatureName(feature, video);
-        if (url === '') {
-            features[feature] = jQuery.Deferred();
-            features[feature].reject({isLoaded: false, exists:false});
-        } else {
-            features[feature] = jQuery.Deferred();
-        }
-        return features[feature];
-    };
 
     /**
      * Returns a deferred object for a given feature name.
@@ -103,7 +84,25 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     };
     
     NS.INJECTOR = NS.INJECTOR || {};
+    
+    /**
+     * Creates a deferred object for a given feature name.
+     * @param {string} feature - The name of the feature.
+     * @param {boolean} video - Indicate that the URL needs decorated.
+     * @return {object} featurs[feature] - A deferred object.
+     */
 
+    NS.INJECTOR.createDeferredForFeature = function (feature, video) {
+        var url = NS.INJECTOR.getUrlForFeatureName(feature, video);
+        if (url === '') {
+            features[feature] = jQuery.Deferred();
+            features[feature].reject({isLoaded: false, exists:false});
+        } else {
+            features[feature] = jQuery.Deferred();
+        }
+        return features[feature];
+    };
+    
     /* Assumes the header library has been synchronously loaded */
     features.header1.resolve({isLoaded: true});
     
@@ -117,16 +116,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             features.footer.done(jQuery(document)[events[i]](loadFeature));
         }    
     }
-    /**
-    * sets default libraries
-    * @param {array} libraries - Array of default libraries
-    */
-    
-    NS.INJECTOR.setDefaultLibraries = function(libraries) {
-        for(var i; i < libraries.length; i++) {
-            features[libraries[i]] = jQuery.Deferred();
-        }
-    }
+
     /**
      * Inspects the webpack chunkNames to determine if there is a registered
      * feature and returns the URL to that feature if there is one.
@@ -168,7 +158,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
                 jQuery.ajax({dataType: 'script', cache: true, url: url})
                 .done(jQuery.proxy(featureLoadSuccess, null, deferredFeature))
@@ -190,7 +180,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
                 jQuery
                 .ajax({dataType: 'script', cache: true, url: url})
