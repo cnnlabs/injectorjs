@@ -229,4 +229,4 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         }
         return promise;
     };
-})(window.NS, jQuery);
+})(window.FAI, jQuery);
