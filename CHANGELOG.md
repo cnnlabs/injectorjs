@@ -1,10 +1,10 @@
-# Injectorjs Changelog
+# fa-injector Changelog
 
 ## 2016-09-20, Version 0.1.0, @adslaton
 
 ### Notable changes
 
-- add injectorjs files
+- add fa-injector files
 
 ### Known issues
 
