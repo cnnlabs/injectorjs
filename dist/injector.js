@@ -103,9 +103,6 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         return features[feature];
     };
     
-    /* Assumes the header library has been synchronously loaded */
-    features.header1.resolve({isLoaded: true});
-    
     /**
     * Sets the loadFeature function to an array of evenListeners
     * @param {array} events - Array of event listeners to set
