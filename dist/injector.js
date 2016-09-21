@@ -76,7 +76,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * Sets up the handler that searches the DOM for resources to load.
      */
     
-    scanFeature = function () {
+    scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().bundle;
             NS.INJECTOR.loadFeature(resource);
@@ -104,7 +104,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     
     NS.INJECTOR.registerEvents = function (events) {
         for(var i = 0; i < events.length; i++ ) {
-            features.footer.done(jQuery(document)[events[i]](scanFeature));
+            features.footer.done(jQuery(document)[events[i]](scanForFeature));
         }    
     }
 
@@ -120,13 +120,13 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             i = 0,
             j = 0,
             chunkNames,
-            features;
+            asset;
         for (i = 0; i < assets.length; i++) {
-            features = assets[i];
-            chunkNames = features.chunkNames;
+            asset = assets[i];
+            chunkNames = asset.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
-                    url = NS.bundleHost + features.name;
+                    url = NS.bundleHost + asset.name;
                     if (video) {
                         url = url + '?version=latest&client=expansion';
                     }
