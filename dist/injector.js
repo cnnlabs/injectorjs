@@ -23,7 +23,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        loadFeature;
+        scanForFeature;
 
     /**
      * Returns a deferred object for a given feature name.
