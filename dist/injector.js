@@ -10,8 +10,8 @@
  *
  *
  */
-window.NS = window.NS || {};
-window.NS.bundleHost = window.NS.bundleHost || '/';
+window.FAI = window.FAI || {};
+window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
@@ -229,4 +229,4 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
         }
         return promise;
     };
-})(window.NS, jQuery);
+})(window.FAI, jQuery);
