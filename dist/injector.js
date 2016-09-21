@@ -15,7 +15,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
-    var chunks = NS.WebpackAssets,
+    var assets = NS.WebpackAssets,
         features = {},
         nsFeatures = {},
         getDeferredFeature,
@@ -76,7 +76,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
      * Sets up the handler that searches the DOM for resources to load.
      */
     
-    loadFeature = function () {
+    scanFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().cnnResource;
             NS.INJECTOR.loadFeature(resource);
@@ -104,7 +104,7 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
     
     NS.INJECTOR.registerEvents = function (events) {
         for(var i = 0; i < events.length; i++ ) {
-            features.footer.done(jQuery(document)[events[i]](loadFeature));
+            features.footer.done(jQuery(document)[events[i]](scanFeature));
         }    
     }
 
@@ -121,8 +121,8 @@ window.NS.bundleHost = window.NS.bundleHost || '/';
             j = 0,
             chunkNames,
             features;
-        for (i = 0; i < chunks.length; i++) {
-            features = chunks[i];
+        for (i = 0; i < assets.length; i++) {
+            features = assets[i];
             chunkNames = features.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {

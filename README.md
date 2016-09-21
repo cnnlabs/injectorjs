@@ -6,7 +6,7 @@ A client library that injects javascript bundles into the DOM.
 
 - jquery 1.12.3
 - the client must define `window.NS.bundleHost`
-
+- if you are adding event listeners, then you must resolve the footer
 ## Installation
 
 ### Bower
