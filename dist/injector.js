@@ -78,7 +78,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     
     scanFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
-            var resource = jQuery(el).data().cnnResource;
+            var resource = jQuery(el).data().bundle;
             NS.INJECTOR.loadFeature(resource);
         });
     };
