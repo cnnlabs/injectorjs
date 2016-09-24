@@ -75,16 +75,16 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-    
+
     loadFeature = function () {
         jQuery('[data-cnn-resource]').each(function (idx, el) {
             var resource = jQuery(el).data().cnnResource;
             NS.INJECTOR.loadFeature(resource);
         });
     };
-    
+
     NS.INJECTOR = NS.INJECTOR || {};
-    
+
     /**
      * Creates a deferred object for a given feature name.
      * @param {string} feature - The name of the feature.
@@ -96,16 +96,18 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         features[feature] = jQuery.Deferred();
         return features[feature];
     };
-    
+
     /**
     * Sets the loadFeature function to an array of evenListeners
     * @param {array} events - Array of event listeners to set
     */
-    
+
     NS.INJECTOR.registerEvents = function (events) {
-        for(var i = 0; i < events.length; i++ ) {
-            features.footer.done(jQuery(document)[events[i]](loadFeature));
-        }    
+      if (features.footer) {
+          features.footer.done(jQuery(document)[events[i]](loadFeature));
+      } else {
+          document.addEventListener(events[i], loadFeature);
+      }
     }
 
     /**
