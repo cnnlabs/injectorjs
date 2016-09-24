@@ -109,7 +109,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             } else {
                 document.addEventListener(events[i], loadFeature);
             }
-       }
+        }
     }
 
     /**
