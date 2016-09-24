@@ -13,9 +13,13 @@
           FAI.INJECTOR.registerEvents(["DOMContentLoaded"]);
         </script>
     </head>
-    <body cnn-data-resource='hellos'>
+    <body data-cnn-resource='hellos'>
         <h1>Injectorjs</h1>
-        <div id="output" data></div>
-        <div id="salida" data></div>
+        <div id="output"></div>
+        <div id="salida"></div>
+        <script>
+          /* This is necessary because footer is required and probably shouldn't be */
+          FAI.INJECTOR.loadFeature('inject');
+        </script>
     </body>
 </html>
