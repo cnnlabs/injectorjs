@@ -1,0 +1,25 @@
+{
+  "name": "injectorjs",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "1.12.3"
+  },
+  "keywords": [
+    "cnn",
+    "cnnlabs",
+    "injector",
+    "injectorjs",
+    "bundles"
+  ],
+  "homepage": "https://github.com/cnnlabs/injectorjs",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "18f87d7cb964251977c7ef7afb3a438c4f045063"
+  },
+  "_source": "https://github.com/cnnlabs/injectorjs.git",
+  "_target": "^0.1.0",
+  "_originalSource": "fa-injector",
+  "_direct": true
+}
