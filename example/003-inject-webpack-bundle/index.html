@@ -15,9 +15,10 @@
     </head>
     <body>
         <h1>Injectorjs</h1>
-        <div id="output" data></div>
+        <div id="output" data-cnn-resource="inject"></div>
         <script>
-            FAI.INJECTOR.loadFeature('inject');
+          /* This is necessary because footer is required and probably shouldn't be */
+          FAI.INJECTOR.loadFeature('inject');
         </script>
     </body>
 </html>
