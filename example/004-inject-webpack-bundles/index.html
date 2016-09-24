@@ -10,16 +10,12 @@
         </script>
         <script src="bower_components/injectorjs/dist/injector.js"></script>
         <script>
-          FAI.INJECTOR.registerEvents("DOMContentLoaded");
+          FAI.INJECTOR.registerEvents(["DOMContentLoaded"]);
         </script>
     </head>
-    <body>
+    <body cnn-data-resource='hellos'>
         <h1>Injectorjs</h1>
         <div id="output" data></div>
         <div id="salida" data></div>
-        <script>
-          /* This is necessary because footer is required and probably shouldn't be */
-          FAI.INJECTOR.loadFeature('hellos');
-        </script>
     </body>
 </html>
