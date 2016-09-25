@@ -1,5 +1,22 @@
 # fa-injector Changelog
 
+## 2016-09-24, Version 0.1.2, @adslaton
+
+### Notable changes
+
+- Updates the code to loop through and array of events.
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`9a0fa9d0e1`](https://github.com/nodejs/node/commit/9a0fa9d0e1)] - Merge pull request #7 from cnnlabs/feature/register-events-fix-loop (A.D. Slaton)
+* [[`db88046cfd`](https://github.com/nodejs/node/commit/db88046cfd)] - Moves a bracket by a couple of spaces so it lines up with the for loop. (marty_trujillo)
+* [[`eb17fd2043`](https://github.com/nodejs/node/commit/eb17fd2043)] - Updates the code to loop through and array of events. (marty_trujillo)
+
 ## 2016-09-24, Version 0.1.1, @adslaton
 
 ### Notable changes
