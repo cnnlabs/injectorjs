@@ -103,13 +103,13 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     */
 
     NS.INJECTOR.registerEvents = function (events) {
-      for (var i = 0; i < events.length; i++) {
-        if (features.footer) {
-            features.footer.done(jQuery(document)[events[i]](loadFeature));
-        } else {
-            document.addEventListener(events[i], loadFeature);
+        for (var i = 0; i < events.length; i++) {
+            if (features.footer) {
+                features.footer.done(jQuery(document)[events[i]](loadFeature));
+            } else {
+                document.addEventListener(events[i], loadFeature);
+            }
         }
-      }
     }
 
     /**
