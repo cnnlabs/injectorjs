@@ -1,5 +1,22 @@
 # fa-injector Changelog
 
+## 2016-09-26, Version 0.2.0, @adslaton
+
+### Notable changes
+
+- changed data-cnn-resouce to data-bundle
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`4f82186846`](https://github.com/nodejs/node/commit/4f82186846)] - Merge pull request #8 from cnnlabs/feature/CNNWE-483 (A.D. Slaton)
+* [[`51659161d4`](https://github.com/nodejs/node/commit/51659161d4)] - resolved conflict for name (pdinh_turner)
+* [[`bad6317515`](https://github.com/nodejs/node/commit/bad6317515)] - resolved merge conflict (pdinh_turner)
+
 ## 2016-09-24, Version 0.1.2, @adslaton
 
 ### Notable changes
