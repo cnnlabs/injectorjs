@@ -75,17 +75,10 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-<<<<<<< HEAD
     
     scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().bundle;
-=======
-
-    loadFeature = function () {
-        jQuery('[data-cnn-resource]').each(function (idx, el) {
-            var resource = jQuery(el).data().cnnResource;
->>>>>>> 7f1d8d990aa35da4145b496c7218aef4d8c49262
             NS.INJECTOR.loadFeature(resource);
         });
     };
@@ -112,9 +105,9 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     NS.INJECTOR.registerEvents = function (events) {
         for (var i = 0; i < events.length; i++) {
             if (features.footer) {
-                features.footer.done(jQuery(document)[events[i]](loadFeature));
+                features.footer.done(jQuery(document)[events[i]](scanForFeature));
             } else {
-                document.addEventListener(events[i], loadFeature);
+                document.addEventListener(events[i], scanForFeature);
             }
         }
     }
