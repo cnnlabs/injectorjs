@@ -15,7 +15,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
-    var chunks = NS.WebpackAssets,
+    var assets = NS.WebpackAssets,
         features = {},
         nsFeatures = {},
         getDeferredFeature,
@@ -23,7 +23,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        loadFeature;
+        scanForFeature;
 
     /**
      * Returns a deferred object for a given feature name.
@@ -75,10 +75,10 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-
-    loadFeature = function () {
-        jQuery('[data-cnn-resource]').each(function (idx, el) {
-            var resource = jQuery(el).data().cnnResource;
+    
+    scanForFeature = function () {
+        jQuery('[data-bundle]').each(function (idx, el) {
+            var resource = jQuery(el).data().bundle;
             NS.INJECTOR.loadFeature(resource);
         });
     };
@@ -105,9 +105,9 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     NS.INJECTOR.registerEvents = function (events) {
         for (var i = 0; i < events.length; i++) {
             if (features.footer) {
-                features.footer.done(jQuery(document)[events[i]](loadFeature));
+                features.footer.done(jQuery(document)[events[i]](scanForFeature));
             } else {
-                document.addEventListener(events[i], loadFeature);
+                document.addEventListener(events[i], scanForFeature);
             }
         }
     }
@@ -124,13 +124,13 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             i = 0,
             j = 0,
             chunkNames,
-            features;
-        for (i = 0; i < chunks.length; i++) {
-            features = chunks[i];
-            chunkNames = features.chunkNames;
+            asset;
+        for (i = 0; i < assets.length; i++) {
+            asset = assets[i];
+            chunkNames = asset.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
-                    url = NS.bundleHost + features.name;
+                    url = NS.bundleHost + asset.name;
                     if (video) {
                         url = url + '?version=latest&client=expansion';
                     }

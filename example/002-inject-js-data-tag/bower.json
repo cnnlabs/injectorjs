@@ -19,6 +19,6 @@
     "tests"
   ],
   "dependencies": {
-    "injectorjs": "fa-injector#^0.1.0"
+    "injectorjs": "fa-injector#^0.2.0"
   }
 }
