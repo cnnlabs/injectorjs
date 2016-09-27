@@ -23,7 +23,10 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        scanForFeature;
+        scanForFeature,
+        loadFeature,
+        loadUrl,
+        getBundleNameForFeatureName;
 
     /**
      * Returns a deferred object for a given feature name.
@@ -83,6 +86,32 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         });
     };
 
+    loadUrl = function (url) {
+        var urlDeferred = jQuery.Deferred();
+        jQuery.ajax({dataType: 'script', cache: true, url: url})
+        .done(function() {urlDeferred.resolve()})
+        .fail(function() {urlDeferred.reject()});
+        return urlDeferred;
+    }
+
+    getBundleNameForFeatureName = function (feature) {
+        var path = '',
+            i = 0,
+            j = 0,
+            chunkNames,
+            features;
+        for (i = 0; i < chunks.length; i++) {
+            features = chunks[i];
+            chunkNames = features.chunkNames;
+            for (j = 0; j < chunkNames.length; j++) {
+                if (chunkNames[j] === feature) {
+                    path = features.name;
+                }
+            }
+        }
+        return path;
+    }
+
     NS.INJECTOR = NS.INJECTOR || {};
 
     /**
@@ -120,23 +149,15 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * @return {string} url - URL to the feature's bundle
      */
     NS.INJECTOR.getUrlForFeatureName = function (feature, video) {
-        var url = '',
-            i = 0,
-            j = 0,
-            chunkNames,
-            asset;
-        for (i = 0; i < assets.length; i++) {
-            asset = assets[i];
-            chunkNames = asset.chunkNames;
-            for (j = 0; j < chunkNames.length; j++) {
-                if (chunkNames[j] === feature) {
-                    url = NS.bundleHost + asset.name;
-                    if (video) {
-                        url = url + '?version=latest&client=expansion';
-                    }
-                }
-            }
+        var url = '';
+
+        var host = NS.bundleHost;
+        var bundleName = getBundleNameForFeatureName(feature);
+        var params = "";
+        if (video) {
+            params = '?version=latest&client=expansion';
         }
+        url = host + bundleName + params;
         return url;
     };
 
@@ -153,11 +174,22 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
             if (deferredFeature.state() !== 'rejected') {
-                jQuery.ajax({dataType: 'script', cache: true, url: url})
-                .done(jQuery.proxy(featureLoadSuccess, null, deferredFeature))
-                .fail(jQuery.proxy(featureLoadFail, null, deferredFeature));
+                loadUrl(url).then(jQuery.proxy(featureLoadSuccess, null, deferredFeature), jQuery.proxy(featureLoadFail, null, deferredFeature));
+            }
+        }
+        return deferredFeature.promise();
+    };
+
+    NS.INJECTOR.loadFeatureForHost = function (feature, host) {
+        var url = host + getBundleNameForFeatureName(feature),
+            deferredFeature = getDeferredFeature(feature);
+
+        if (typeof deferredFeature === 'undefined') {
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
+            if (deferredFeature.state() !== 'rejected') {
+                loadUrl(url).then(jQuery.proxy(featureLoadSuccess, null, deferredFeature), jQuery.proxy(featureLoadFail, null, deferredFeature));
             }
         }
         return deferredFeature.promise();
@@ -177,10 +209,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
-                jQuery
-                .ajax({dataType: 'script', cache: true, url: url})
-                .done(jQuery.proxy(featureExecuteSuccess, null, deferredFeature))
-                .fail(jQuery.proxy(featureExecuteFail, null, deferredFeature));
+                loadUrl(url).then(jQuery.proxy(featureExecuteSuccess, null, deferredFeature), jQuery.proxy(featureExecuteFail, null, deferredFeature));
             }
         }
         return deferredFeature.promise();
