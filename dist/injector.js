@@ -100,8 +100,8 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             j = 0,
             chunkNames,
             features;
-        for (i = 0; i < chunks.length; i++) {
-            features = chunks[i];
+        for (i = 0; i < assets.length; i++) {
+            features = assets[i];
             chunkNames = features.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
