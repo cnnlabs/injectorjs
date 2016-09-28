@@ -1,0 +1,16 @@
+{
+  "name": "fa-injector-examples",
+  "homepage": "https://github.com/cnnlabs/injectorjs",
+  "authors": [
+    "marty_trujillo <marty@ilikeemail.com>"
+  ],
+  "description": "FA Injector Examples",
+  "main": "index.html",
+  "keywords": [
+    "fa-injector"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "injectorjs": "fa-injector#^0.2.0"
+  }
+}

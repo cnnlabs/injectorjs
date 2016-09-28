@@ -1,14 +1,14 @@
 <html>
     <head>
         <title>Injectorjs</title>
-        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
         <script>
             window.FAI = {
                 bundleHost: 'bundles/',
                 WebpackAssets: [{'name':'hellos.js','chunkNames':['hellos']}]
             };
         </script>
-        <script src="bower_components/injectorjs/dist/injector.js"></script>
+        <script src="/bower_components/injectorjs/dist/injector.js"></script>
         <script>
           FAI.INJECTOR.registerEvents(["DOMContentLoaded"]);
         </script>
