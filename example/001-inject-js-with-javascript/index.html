@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
+            };
+        </script>
+        <script src="../bower_components/injectorjs/dist/injector.js"></script>
+    </head>
+    <body>
+        <h1>Injectorjs</h1>
+        <div id="output"></div>
+        <script>
+            FAI.INJECTOR.loadFeature('inject');
+        </script>
+    </body>
+</html>
