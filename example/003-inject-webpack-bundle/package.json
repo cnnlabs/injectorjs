@@ -1,0 +1,14 @@
+{
+  "name": "003-inject-webpack-bundle",
+  "version": "1.0.0",
+  "description": "An example of using the injector to injects a webpack bundle.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "martytheparty",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
+}
