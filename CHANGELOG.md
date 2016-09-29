@@ -1,5 +1,26 @@
 # fa-injector Changelog
 
+## 2016-09-29, Version 0.3.0, @adslaton
+
+### Notable changes
+
+- Refactor examples to 2.0
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`03a4e7de49`](https://github.com/nodejs/node/commit/03a4e7de49)] - Merge pull request #5 from cnnlabs/feature/examples (A.D. Slaton)
+* [[`6a6c849631`](https://github.com/nodejs/node/commit/6a6c849631)] - removing /bower_components (A.D. Slaton)
+* [[`4897ee5767`](https://github.com/nodejs/node/commit/4897ee5767)] - Updates README docs to accomodate the change in bower_components location. (marty_trujillo)
+* [[`d0d4d00620`](https://github.com/nodejs/node/commit/d0d4d00620)] - Moves the bower components and refactors examples for the move. (marty_trujillo)
+* [[`090374baa5`](https://github.com/nodejs/node/commit/090374baa5)] - Refactor examples to 2.0. (marty_trujillo)
+* [[`201bc34b77`](https://github.com/nodejs/node/commit/201bc34b77)] - Added support libraries. (marty_trujillo)
+* [[`f5e4afb40c`](https://github.com/nodejs/node/commit/f5e4afb40c)] - Added support libraries. (marty_trujillo)
+
 ## 2016-09-26, Version 0.2.0, @adslaton
 
 ### Notable changes
