@@ -20,6 +20,5 @@
   },
   "_source": "https://github.com/cnnlabs/injectorjs.git",
   "_target": "^0.2.0",
-  "_originalSource": "fa-injector",
-  "_direct": true
+  "_originalSource": "fa-injector"
 }
