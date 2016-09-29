@@ -78,13 +78,19 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-    
+
     scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().bundle;
             NS.INJECTOR.loadFeature(resource);
         });
     };
+
+    /**
+     * Loads a bundle from a URL.
+     * @param {string} url - The location of the bundle.
+     * @return {object} urlDeferred - A deferred object.
+     */
 
     loadUrl = function (url) {
         var urlDeferred = jQuery.Deferred();
@@ -94,8 +100,14 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         return urlDeferred;
     }
 
+    /**
+     * Returns the file name of a feature.
+     * @param {string} feature - The name of the feature.
+     * @return {string} fileName - The feature's file name.
+     */
+
     getBundleNameForFeatureName = function (feature) {
-        var path = '',
+        var fileName = '',
             i = 0,
             j = 0,
             chunkNames,
@@ -105,11 +117,11 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             chunkNames = features.chunkNames;
             for (j = 0; j < chunkNames.length; j++) {
                 if (chunkNames[j] === feature) {
-                    path = features.name;
+                    fileName = features.name;
                 }
             }
         }
-        return path;
+        return fileName;
     }
 
     NS.INJECTOR = NS.INJECTOR || {};
@@ -182,6 +194,15 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         return deferredFeature.promise();
     };
 
+    /**
+     * Returns a promise for a resource feature/host combinations.
+     * Resolves the promise after loading but (sometimes) before the library
+     * is executed.
+     * @param {string} feature - The name of the feature.
+     * @param {string} host - The name of the host.
+     * @return {object} promise - A promise resolved when the feature is loaded.
+     * note: videos always need to the library executed.
+     */
     NS.INJECTOR.loadFeatureForHost = function (feature, host) {
         var url = host + getBundleNameForFeatureName(feature),
             deferredFeature = getDeferredFeature(feature);
