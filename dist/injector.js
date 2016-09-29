@@ -81,8 +81,13 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
     scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
-            var resource = jQuery(el).data().bundle;
-            NS.INJECTOR.loadFeature(resource);
+            var resource = jQuery(el).data().bundle,
+                host =  jQuery(el).data().host;
+            if (host) {
+                NS.INJECTOR.loadFeatureForHost(resource, host);
+            } else {
+                NS.INJECTOR.loadFeature(resource);
+            }
         });
     };
 
