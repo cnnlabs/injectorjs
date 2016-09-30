@@ -3,18 +3,20 @@
         <title>Injectorjs</title>
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script>
+            /*global window, FAI*/
             window.FAI = {
                 bundleHost: 'bundles/',
-                WebpackAssets: [{'name':'bundle.js','chunkNames':['inject']}]
+                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
             };
         </script>
         <script src="../bower_components/injectorjs/dist/injector.js"></script>
         <script>
-          FAI.INJECTOR.registerEvents(["DOMContentLoaded"]);
+            FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
         </script>
     </head>
     <body>
-        <h1>Injectorjs</h1>
+        <h1>FA Injector JS</h1>
+        <h2>Inject js with data tag</h2>
         <div id="output" data-bundle="inject"></div>
     </body>
 </html>
