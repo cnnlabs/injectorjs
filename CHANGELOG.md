@@ -1,5 +1,21 @@
 # fa-injector Changelog
 
+## 2016-09-30, Version 0.5.0, @adslaton
+
+### Notable changes
+
+- add example/index.html
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`e9afc0b08e`](https://github.com/nodejs/node/commit/e9afc0b08e)] - update h1 tags (A.D. Slaton)
+* [[`4484dbf029`](https://github.com/nodejs/node/commit/4484dbf029)] - add example/index.html (A.D. Slaton)
+
 ## 2016-09-30, Version 0.4.0, @adslaton
 
 ### Notable changes
