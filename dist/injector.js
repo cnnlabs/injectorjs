@@ -166,11 +166,11 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * @return {string} url - URL to the feature's bundle
      */
     NS.INJECTOR.getUrlForFeatureName = function (feature, video) {
-        var url = '';
+        var url = '',
+            host = NS.bundleHost,
+            bundleName = getBundleNameForFeatureName(feature),
+            params = "";
 
-        var host = NS.bundleHost;
-        var bundleName = getBundleNameForFeatureName(feature);
-        var params = "";
         if (video) {
             params = '?version=latest&client=expansion';
         }
