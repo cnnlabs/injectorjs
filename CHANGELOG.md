@@ -1,5 +1,23 @@
 # fa-injector Changelog
 
+## 2016-09-30, Version 0.4.0, @adslaton
+
+### Notable changes
+
+- Refactoring to support bundle hosts
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`22c4de8c13`](https://github.com/nodejs/node/commit/22c4de8c13)] - Merge pull request #9 from cnnlabs/feature/CNNWE-489 (A.D. Slaton)
+* [[`0e95a9add4`](https://github.com/nodejs/node/commit/0e95a9add4)] -  (marty_trujillo)
+* [[`1ea6a04dd5`](https://github.com/nodejs/node/commit/1ea6a04dd5)] - Update for PR. (c-expansion-mtrujill_turner)
+* [[`ea6914d098`](https://github.com/nodejs/node/commit/ea6914d098)] - Merge branch 'develop' into feature/CNNWE-489 (c-expansion-mtrujill_turner)
+
 ## 2016-09-29, Version 0.3.0, @adslaton
 
 ### Notable changes
