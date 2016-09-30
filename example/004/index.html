@@ -5,16 +5,18 @@
         <script>
             window.FAI = {
                 bundleHost: 'bundles/',
-                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
+                WebpackAssets: [{'name':'hellos.js','chunkNames':['hellos']}]
             };
         </script>
         <script src="../bower_components/injectorjs/dist/injector.js"></script>
-    </head>
-    <body>
-        <h1>Injectorjs</h1>
-        <div id="output"></div>
         <script>
-            FAI.INJECTOR.loadFeature('inject');
+          FAI.INJECTOR.registerEvents(["DOMContentLoaded"]);
         </script>
+    </head>
+    <body data-bundle='hellos'>
+        <h1>Injectorjs</h1>
+        <h2>Inject webpack bundles</h2>
+        <div id="output"></div>
+        <div id="salida"></div>
     </body>
 </html>
