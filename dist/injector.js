@@ -15,7 +15,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
-    var assets = NS.WebpackAssets,
+    var assets = NS.WebpackAssets || [],
         features = {},
         nsFeatures = {},
         getDeferredFeature,
