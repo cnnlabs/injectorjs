@@ -15,7 +15,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS, jQuery) {
     'use strict';
-    var assets = NS.WebpackAssets,
+    var assets = NS.WebpackAssets || [],
         features = {},
         nsFeatures = {},
         getDeferredFeature,
@@ -23,7 +23,10 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         featureExecuteFail,
         featureExecuteSuccess,
         featureLoadSuccess,
-        scanForFeature;
+        scanForFeature,
+        loadFeature,
+        loadUrl,
+        getBundleNameForFeatureName;
 
     /**
      * Returns a deferred object for a given feature name.
@@ -75,13 +78,56 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Sets up the handler that searches the DOM for resources to load.
      */
-    
+
     scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
-            var resource = jQuery(el).data().bundle;
-            NS.INJECTOR.loadFeature(resource);
+            var resource = jQuery(el).data().bundle,
+                host =  jQuery(el).data().host;
+            if (host) {
+                NS.INJECTOR.loadFeatureForHost(resource, host);
+            } else {
+                NS.INJECTOR.loadFeature(resource);
+            }
         });
     };
+
+    /**
+     * Loads a bundle from a URL.
+     * @param {string} url - The location of the bundle.
+     * @return {object} urlDeferred - A deferred object.
+     */
+
+    loadUrl = function (url) {
+        var urlDeferred = jQuery.Deferred();
+        jQuery.ajax({dataType: 'script', cache: true, url: url})
+        .done(function() {urlDeferred.resolve()})
+        .fail(function() {urlDeferred.reject()});
+        return urlDeferred;
+    }
+
+    /**
+     * Returns the file name of a feature.
+     * @param {string} feature - The name of the feature.
+     * @return {string} fileName - The feature's file name.
+     */
+
+    getBundleNameForFeatureName = function (feature) {
+        var fileName = '',
+            i = 0,
+            j = 0,
+            chunkNames,
+            features;
+        for (i = 0; i < assets.length; i++) {
+            features = assets[i];
+            chunkNames = features.chunkNames;
+            for (j = 0; j < chunkNames.length; j++) {
+                if (chunkNames[j] === feature) {
+                    fileName = features.name;
+                }
+            }
+        }
+        return fileName;
+    }
 
     NS.INJECTOR = NS.INJECTOR || {};
 
@@ -121,22 +167,14 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      */
     NS.INJECTOR.getUrlForFeatureName = function (feature, video) {
         var url = '',
-            i = 0,
-            j = 0,
-            chunkNames,
-            asset;
-        for (i = 0; i < assets.length; i++) {
-            asset = assets[i];
-            chunkNames = asset.chunkNames;
-            for (j = 0; j < chunkNames.length; j++) {
-                if (chunkNames[j] === feature) {
-                    url = NS.bundleHost + asset.name;
-                    if (video) {
-                        url = url + '?version=latest&client=expansion';
-                    }
-                }
-            }
+            host = NS.bundleHost,
+            bundleName = getBundleNameForFeatureName(feature),
+            params = "";
+
+        if (video) {
+            params = '?version=latest&client=expansion';
         }
+        url = host + bundleName + params;
         return url;
     };
 
@@ -153,11 +191,31 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
             if (deferredFeature.state() !== 'rejected') {
-                jQuery.ajax({dataType: 'script', cache: true, url: url})
-                .done(jQuery.proxy(featureLoadSuccess, null, deferredFeature))
-                .fail(jQuery.proxy(featureLoadFail, null, deferredFeature));
+                loadUrl(url).then(jQuery.proxy(featureLoadSuccess, null, deferredFeature), jQuery.proxy(featureLoadFail, null, deferredFeature));
+            }
+        }
+        return deferredFeature.promise();
+    };
+
+    /**
+     * Returns a promise for a resource feature/host combinations.
+     * Resolves the promise after loading but (sometimes) before the library
+     * is executed.
+     * @param {string} feature - The name of the feature.
+     * @param {string} host - The name of the host.
+     * @return {object} promise - A promise resolved when the feature is loaded.
+     * note: videos always need to the library executed.
+     */
+    NS.INJECTOR.loadFeatureForHost = function (feature, host) {
+        var url = host + getBundleNameForFeatureName(feature),
+            deferredFeature = getDeferredFeature(feature);
+
+        if (typeof deferredFeature === 'undefined') {
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
+            if (deferredFeature.state() !== 'rejected') {
+                loadUrl(url).then(jQuery.proxy(featureLoadSuccess, null, deferredFeature), jQuery.proxy(featureLoadFail, null, deferredFeature));
             }
         }
         return deferredFeature.promise();
@@ -177,10 +235,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
             if (deferredFeature.state() !== 'rejected') {
-                jQuery
-                .ajax({dataType: 'script', cache: true, url: url})
-                .done(jQuery.proxy(featureExecuteSuccess, null, deferredFeature))
-                .fail(jQuery.proxy(featureExecuteFail, null, deferredFeature));
+                loadUrl(url).then(jQuery.proxy(featureExecuteSuccess, null, deferredFeature), jQuery.proxy(featureExecuteFail, null, deferredFeature));
             }
         }
         return deferredFeature.promise();
