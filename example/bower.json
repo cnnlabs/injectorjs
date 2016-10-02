@@ -11,6 +11,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "injectorjs": "fa-injector#^0.2.0"
+    "injectorjs": "fa-injector#^0.5.0"
   }
 }
