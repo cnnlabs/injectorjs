@@ -74,11 +74,25 @@
 	    return React.createElement(
 	      'p',
 	      { onClick: this.handleClick },
-	      'You ',
-	      text,
-	      ' this. Click to toggle - click count ',
-	      count,
-	      '.'
+	      React.createElement(
+	        'div',
+	        null,
+	        'You ',
+	        text,
+	        ' this.'
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        'Click to toggle'
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        'click count ',
+	        count,
+	        '.'
+	      )
 	    );
 	  }
 	});

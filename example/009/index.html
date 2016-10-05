@@ -2,13 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello React</title>
+    <title>Hello React - Loaded With The FA-injector</title>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="https://fb.me/react-15.0.1.js"></script>
     <script src="https://fb.me/react-dom-15.0.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script>
+        window.FAI = {
+            bundleHost: 'bundles/',
+            WebpackAssets: [
+              {'name':'react.js','chunkNames':['reactexample']}
+            ]
+        };
+    </script>
+    <script src="../bower_components/injectorjs/dist/injector.js"></script>
+    <script>
+        FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
+    </script>
   </head>
   <body>
-    <div id="example"></div>
-    <script src="bundles/react.js"></script>
+    <div id="example" data-bundle="reactexample"></div>
   </body>
 </html>
