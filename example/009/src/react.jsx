@@ -19,9 +19,9 @@ var LikeButton = React.createClass({
     var text = this.state.liked ? 'like' : 'don\'t like';
     return (
       <p onClick={this.handleClick}>
-        <div>You {text} this.</div>
-        <div>Click to toggle</div>
-        <div>click count {count}.</div>
+        You {text} this.<br />
+        Click to toggle<br />
+        click count {count}.<br />
       </p>
     );
   }
