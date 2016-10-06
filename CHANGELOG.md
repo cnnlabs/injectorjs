@@ -1,4 +1,20 @@
-# fa-injector Changelog
+# Future Aligned Injector (FAI) Changelog
+
+## 2016-10-06, Version 0.6.1, @adslaton
+
+### Notable changes
+
+- update the dev registry hostname to registry.dev.api.cnn.io
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`696a57b4ec`](https://github.com/nodejs/node/commit/696a57b4ec)] - Merge pull request #13 from cnnlabs/feature/registry-dev-host (A.D. Slaton)
+* [[`98bcbaac1a`](https://github.com/nodejs/node/commit/98bcbaac1a)] - update the dev registry hostname to registry.dev.api.cnn.io (A.D. Slaton)
 
 ## 2016-10-06, Version 0.6.0, @adslaton
 
