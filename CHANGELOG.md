@@ -1,5 +1,34 @@
 # fa-injector Changelog
 
+## 2016-10-06, Version 0.6.0, @adslaton
+
+### Notable changes
+
+- Adds new examples
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`692cf1766f`](https://github.com/nodejs/node/commit/692cf1766f)] - Merge pull request #12 from cnnlabs/feature/007example (A.D. Slaton)
+* [[`10210721b9`](https://github.com/nodejs/node/commit/10210721b9)] - Merge pull request #11 from cnnlabs/feature/006example (A.D. Slaton)
+* [[`4c9659d6c2`](https://github.com/nodejs/node/commit/4c9659d6c2)] - Fix for PR. (marty_trujillo)
+* [[`e71bf44384`](https://github.com/nodejs/node/commit/e71bf44384)] - Merge branch 'feature/006example' into feature/007example (marty_trujillo)
+* [[`65f2667606`](https://github.com/nodejs/node/commit/65f2667606)] - Tweak for PR comment. (marty_trujillo)
+* [[`fe785394d6`](https://github.com/nodejs/node/commit/fe785394d6)] - Adds a remote react example. (c-expansion-mtrujill_turner)
+* [[`5684915c00`](https://github.com/nodejs/node/commit/5684915c00)] - Tweaks react bundles. (c-expansion-mtrujill_turner)
+* [[`cee83b592c`](https://github.com/nodejs/node/commit/cee83b592c)] - Updates the react example to use the FA-injector (c-expansion-mtrujill_turner)
+* [[`8339541e40`](https://github.com/nodejs/node/commit/8339541e40)] - Adds a react example. (marty_trujillo)
+* [[`06855bcaa1`](https://github.com/nodejs/node/commit/06855bcaa1)] - Adds READMEs for 007 and 008. (marty_trujillo)
+* [[`60df2ba721`](https://github.com/nodejs/node/commit/60df2ba721)] - Adds an example. (marty_trujillo)
+* [[`2ddb56061c`](https://github.com/nodejs/node/commit/2ddb56061c)] - Adds an example that automatically loads the mobile or the desktop view based on client width. (marty_trujillo)
+* [[`b38b17b1cd`](https://github.com/nodejs/node/commit/b38b17b1cd)] - Bumps the injector version for the examples (marty_trujillo)
+* [[`aa0b552d41`](https://github.com/nodejs/node/commit/aa0b552d41)] - Adds README changes. (c-expansion-mtrujill_turner)
+* [[`bcd6133c93`](https://github.com/nodejs/node/commit/bcd6133c93)] - Adds a new example. (c-expansion-mtrujill_turner)
+
 ## 2016-09-30, Version 0.5.0, @adslaton
 
 ### Notable changes

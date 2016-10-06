@@ -1,4 +1,4 @@
-# fa-injector
+# Future Aligned Injector (FAI)
 
 A client library that injects javascript bundles into the DOM.
 
