@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [
+                  {'name':'user.js','chunkNames':['user']},
+                  {'name':'location.js','chunkNames':['location']},
+                  {'name':'account.js','chunkNames':['account']},
+                  {'name':'tabscontroller.js','chunkNames':['tabs']},
+                ]
+            };
+        </script>
+        <script src="../bower_components/injectorjs/dist/injector.js"></script>
+        <script>
+            FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
+        </script>
+
+        <style>
+          #tabs {
+              border: 1px solid #444444;
+              margin: 0 auto;
+              width:50%;
+              margin-top: 20px;
+          }
+          .tab {
+              float:left;
+              background-color: #dddddd;
+              padding:2px;
+              cursor: pointer;
+              margin: 1px;
+          }
+          .tab.active {
+            background-color: #666666;
+            color:#FFFFFF;
+          }
+          .tabcontent {
+              clear:both;
+              min-height: 400px;
+              padding:10px;
+          }
+          .content {
+              display:none;
+          }
+          .content.active {
+              display:block;
+          }
+        </style>
+
+    </head>
+    <body>
+      <div id="tabs" data-bundle="tabs">
+        <div class="tab intro active" data-tab="intro">Intro</div>
+        <div class="tab user" data-tab="user">User</div>
+        <div class="tab location" data-tab="location">Location</div>
+        <div class="tab account" data-tab="account">Account</div>
+        <div class="tabcontent">
+          <span class="content intro active">
+            The user, location, and account assets (html, js, and css) do not load unless
+            the tab is clicked.
+          </span>
+          <span class="content user">user</span>
+          <span class="content location">location</span>
+          <span class="content account">account</span>
+        </div>
+      </div>
+    </body>
+</html>

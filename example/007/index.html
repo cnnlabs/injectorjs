@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+            /*global window*/
+            window.FAI = {
+                bundleHost: '/bundles/',
+                WebpackAssets: [{'name':'desktopImage.js','chunkNames':['desktop']},{'name':'mobileImage.js','chunkNames':['mobile']}]
+            };
+        </script>
+        <script src="../bower_components/injectorjs/dist/injector.js"></script>
+    </head>
+    <body>
+
+
+      <script>
+        function loadPhoneBundle() {
+            FAI.INJECTOR.loadFeatureForHost('mobile', 'http://darwin.registry.dev.api.cnn.io/bundles/mobileImage/');
+        }
+
+        function loadDesktopBundle() {
+            FAI.INJECTOR.loadFeatureForHost('desktop', 'http://darwin.registry.dev.api.cnn.io/bundles/desktopImage/');
+        }
+
+        if ($(window).width() > 600) {
+            loadDesktopBundle();
+        } else {
+            loadPhoneBundle();
+        }
+      </script>
+    </body>
+</head>
