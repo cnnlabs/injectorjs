@@ -82,8 +82,11 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     scanForFeature = function () {
         jQuery('[data-bundle]').each(function (idx, el) {
             var resource = jQuery(el).data().bundle,
-                host =  jQuery(el).data().host;
-            if (host) {
+                host =  jQuery(el).data().host || '',
+                source  =  jQuery(el).data().source || '';
+            if (source) {
+                NS.INJECTOR.loadFeatureForSource(resource, source);
+            } if (host) {
                 NS.INJECTOR.loadFeatureForHost(resource, host);
             } else {
                 NS.INJECTOR.loadFeature(resource);
@@ -189,6 +192,27 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         var video = false,
             deferredFeature = getDeferredFeature(feature),
             url = NS.INJECTOR.getUrlForFeatureName(feature, video);
+
+        if (typeof deferredFeature === 'undefined') {
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
+            if (deferredFeature.state() !== 'rejected') {
+                loadUrl(url).then(jQuery.proxy(featureLoadSuccess, null, deferredFeature), jQuery.proxy(featureLoadFail, null, deferredFeature));
+            }
+        }
+        return deferredFeature.promise();
+    };
+
+    /**
+     * Returns a promise for a resource feature/host/src combinations.
+     * Resolves the promise after loading but (sometimes) before the library
+     * is executed.
+     * @param {string} feature - The name of the feature.
+     * @param {string} source - The name of the src.
+     * @return {object} promise - A promise resolved when the feature is loaded.
+     */
+    NS.INJECTOR.loadFeatureForSource = function (feature, source) {
+        var url = source,
+            deferredFeature = getDeferredFeature(feature);
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
