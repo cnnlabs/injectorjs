@@ -86,7 +86,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
                 source  =  jQuery(el).data().source || '';
             if (source) {
                 NS.INJECTOR.loadFeatureForSource(resource, source);
-            } if (host) {
+            } else if (host) {
                 NS.INJECTOR.loadFeatureForHost(resource, host);
             } else {
                 NS.INJECTOR.loadFeature(resource);
