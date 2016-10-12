@@ -1,5 +1,24 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-11, Version 0.6.2, @adslaton
+
+### Notable changes
+
+- Adds support for data-source attribute
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`9e0680d3e7`](https://github.com/nodejs/node/commit/9e0680d3e7)] - Merge pull request #15 from cnnlabs/feature/elementLevelSourceField (A.D. Slaton)
+* [[`f66e7b5d3f`](https://github.com/nodejs/node/commit/f66e7b5d3f)] - Merge pull request #14 from cnnlabs/feature/addReadme9and10 (A.D. Slaton)
+* [[`43d1a5664f`](https://github.com/nodejs/node/commit/43d1a5664f)] - Fixes a bugdiscovered during review. (marty_trujillo)
+* [[`c89445390f`](https://github.com/nodejs/node/commit/c89445390f)] - Adds support for data-source attribute. (marty_trujillo)
+* [[`6f8bcf28c9`](https://github.com/nodejs/node/commit/6f8bcf28c9)] - Adds README files for 009 and 010 examples. (marty_trujillo)
+
 ## 2016-10-06, Version 0.6.1, @adslaton
 
 ### Notable changes
