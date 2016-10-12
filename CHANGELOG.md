@@ -1,5 +1,24 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-12, Version 0.7.0, @adslaton
+
+### Notable changes
+
+- Add linting and minify process
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`6763155012`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/6763155012)] - Merge pull request #19 from cnnlabs/feature/use-manifest.json (A.D. Slaton)
+* [[`5ad404fb37`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/5ad404fb37)] - Merge pull request #16 from cnnlabs/feature/012example (A.D. Slaton)
+* [[`a3837140fb`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/a3837140fb)] - no need to add bower_components to the gitignore (A.D. Slaton)
+* [[`8102568ab9`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/8102568ab9)] - removing bower install (A.D. Slaton)
+* [[`2e86a936c4`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/2e86a936c4)] - add linting and minify process (A.D. Slaton)
+
 ## 2016-10-11, Version 0.6.2, @adslaton
 
 ### Notable changes
