@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [
+                  {'name':'level1.js','chunkNames':['level1']},
+                  {'name':'level2.js','chunkNames':['level2']},
+                  {'name':'level3.js','chunkNames':['level3']},
+                  {'name':'level4.js','chunkNames':['level4']},
+                  {'name':'level5.js','chunkNames':['level5']},
+                  {'name':'handlers.js','chunkNames':['handlers']},
+                  {'name':'status.js','chunkNames':['status']}
+                ]
+            };
+        </script>
+        <script src="../bower_components/injectorjs/dist/injector.js"></script>
+        <script>
+            FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
+        </script>
+        <style>
+          td {
+            align-content: center;
+          }
+          .level {
+            height:30px;
+            cursor: pointer;
+          }
+          .level1 {
+            width: 300px;
+            border: 1px solid #BBB;
+          }
+          .level2 {
+            width: 200px;
+            border: 1px solid #BBB;
+          }
+          .level3 {
+            width: 100px;
+            border: 1px solid #BBB;
+          }
+          .level4 {
+            width: 50px;
+            border: 1px solid #BBB;
+          }
+          .level5 {
+            width: 25px;
+            border: 1px solid #BBB;
+          }
+          .status {
+            width: 400px;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #666;
+            background-color: #DDD;
+            border-radius: 5px;
+          }
+          p {
+            width:400px;
+          }
+        </style>
+    </head>
+    <body data-bundle='handlers'>
+      <p>
+        Every Level Of The Pyramid Depends On The Level Below.  Click On Any
+        Level... and the bundles will handle the dependencies.
+      </p>
+      <table>
+        <tr><td align="center"><div data-level = "level5" class = "level5 level"></div></td></tr>
+        <tr><td align="center"><div data-level = "level4" class = "level4 level"></div></td></tr>
+        <tr><td align="center"><div data-level = "level3" class = "level3 level"></div></td></tr>
+        <tr><td align="center"><div data-level = "level2" class = "level2 level"></div></td></tr>
+        <tr><td align="center"><div data-level = "level1" class = "level1 level"></div></td></tr>
+      </table>
+      status:
+      <div data-bundle='status' class="status"></div>
+    </body>
+</html>
