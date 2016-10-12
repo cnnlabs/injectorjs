@@ -164,17 +164,19 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * Inspects the webpack chunkNames to determine if there is a registered
      * feature and returns the URL to that feature if there is one.
      * @param {string} feature - The name of the feature.
-     * @param {boolean} video - Indicate that the URL needs decorated.
+     * @param {object} options - Options to be passed in.
      * @return {string} url - URL to the feature's bundle
      */
-    NS.INJECTOR.getUrlForFeatureName = function (feature, video) {
+    NS.INJECTOR.getUrlForFeatureName = function (feature, options) {
         var url = '',
             host = NS.bundleHost,
             bundleName = getBundleNameForFeatureName(feature),
             params = '';
 
-        if (video) {
-            params = '?version=latest&client=expansion';
+        options = options || {};
+
+        if (options.params) {
+            params = options.params;
         }
         url = host + bundleName + params;
         return url;
