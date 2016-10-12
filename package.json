@@ -1,10 +1,9 @@
 {
   "name": "injectorjs",
   "version": "0.6.2",
-  "description": "CNN.com - Holistic Optimization Performance Enhancement",
+  "description": "Future Aligned Injector (FAI) - A client library that injects javascript bundles into the DOM.",
   "scripts": {
     "build": "gulp build",
-    "postinstall": "node_modules/.bin/bower install --config.interactive=false || true",
     "generate-changelog": "changelog-maker --group",
     "test": "gulp test"
   },
