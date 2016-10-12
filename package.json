@@ -1,0 +1,30 @@
+{
+  "name": "injectorjs",
+  "version": "0.6.2",
+  "description": "CNN.com - Holistic Optimization Performance Enhancement",
+  "scripts": {
+    "build": "gulp build",
+    "postinstall": "node_modules/.bin/bower install --config.interactive=false || true",
+    "generate-changelog": "changelog-maker --group",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cnnlabes/injectorjs.git"
+  },
+  "homepage": "https://github.com/cnnlabs/injectorjs",
+  "engines": {
+    "node": "6.6.0",
+    "npm": "3.10.8"
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-minify": "0.0.14",
+    "gulp-jscs": "4.0.0"
+  },
+  "keywords": [
+    "cnn",
+    "cnnlabs"
+  ],
+  "license": "MIT"
+}
