@@ -187,12 +187,10 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * loading but (sometimes) before the library is executed.
      * @param {string} feature - The name of the feature.
      * @return {object} promise - A promise resolved when the feature is loaded.
-     * note: videos always need to the library executed.
      */
     NS.INJECTOR.loadFeature = function (feature) {
-        var video = false,
-            deferredFeature = getDeferredFeature(feature),
-            url = NS.INJECTOR.getUrlForFeatureName(feature, video);
+        var deferredFeature = getDeferredFeature(feature),
+            url = NS.INJECTOR.getUrlForFeatureName(feature, {});
 
         if (typeof deferredFeature === 'undefined') {
             deferredFeature = NS.INJECTOR.createDeferredForFeature(feature);
@@ -231,7 +229,6 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
      * @param {string} feature - The name of the feature.
      * @param {string} host - The name of the host.
      * @return {object} promise - A promise resolved when the feature is loaded.
-     * note: videos always need to the library executed.
      */
     NS.INJECTOR.loadFeatureForHost = function (feature, host) {
         var url = host + getBundleNameForFeatureName(feature),
@@ -249,16 +246,16 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     /**
      * Returns a promise for a resource feature.  Will not resolve the promise.
      * @param {string} feature - The name of the feature.
-     * @param {boolean} video - Indicate that the URL needs decorated.
+     * @param {object} options - Optional parameters.
      * @return {object} promise - A promise progress when the feature is loaded.
      */
 
-    NS.INJECTOR.executeFeature = function (feature, video) {
+    NS.INJECTOR.executeFeature = function (feature, options) {
         var deferredFeature = getDeferredFeature(feature),
-            url = NS.INJECTOR.getUrlForFeatureName(feature, video);
+            url = NS.INJECTOR.getUrlForFeatureName(feature, options);
 
         if (typeof deferredFeature === 'undefined') {
-            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, video);
+            deferredFeature = NS.INJECTOR.createDeferredForFeature(feature, options);
             if (deferredFeature.state() !== 'rejected') {
                 loadUrl(url).then(jQuery.proxy(featureExecuteSuccess, null, deferredFeature), jQuery.proxy(featureExecuteFail, null, deferredFeature));
             }
@@ -275,7 +272,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     };
 
     /**
-     * Creates a new deferred object for a namespace (ie CNN.VideoPlayer.addVideo) feature.
+     * Creates a new deferred object for a namespace (ie NS.VideoPlayer.addVideo) feature.
      * @param {string} feature - The name of the feature.
      */
     NS.INJECTOR.resetNameSpaceFeature = function (feature) {
@@ -283,7 +280,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     };
 
     /**
-     * Returns a promise for a namespace (ie CNN.VideoPlayer.addVideo) feature.
+     * Returns a promise for a namespace (ie NS.VideoPlayer.addVideo) feature.
      * @param {string} feature - The name of the feature.
      * @return {object} promise - A promise resolved when the feature is loaded.
      */
