@@ -2,6 +2,12 @@
 
 A client library that injects javascript bundles into the DOM.
 
+## Why?
+
+Interactions with web content is constantly evolving. This modules abstracts out
+a mechanism to be able to dynamically deliver assets to a browser client on demand.
+
+
 ## Requirements
 
 - jquery 1.12.3
