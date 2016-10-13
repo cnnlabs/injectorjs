@@ -17,9 +17,13 @@
     "npm": "3.10.8"
   },
   "devDependencies": {
+    "imports-loader": "0.6.5",
+    "jquery": "3.1.1",
     "gulp": "3.9.1",
+    "gulp-clean": "",
     "gulp-minify": "0.0.14",
-    "gulp-jscs": "4.0.0"
+    "gulp-jscs": "4.0.0",
+    "webpack": "1.13.2"
   },
   "keywords": [
     "cnn",
