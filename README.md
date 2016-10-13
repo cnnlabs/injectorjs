@@ -18,6 +18,10 @@ a mechanism to be able to dynamically deliver assets to a browser client on dema
 
 ## Installation
 
+## Hosted
+
+##
+
 ### Bower
 
 ```
