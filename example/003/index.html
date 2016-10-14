@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Injectorjs</title>
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
         <script>
             /*global window, FAI*/
             window.FAI = {
@@ -9,7 +9,7 @@
                 WebpackAssets: [{'name':'bundle.js','chunkNames':['inject']}]
             };
         </script>
-        <script src="../bower_components/injectorjs/dist/injector.js"></script>
+        <script src="http://registry.dev.api.cnn.io/bundles/injectorjs/0.7.0/injector.lite.js"></script>
         <script>
             FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
         </script>
