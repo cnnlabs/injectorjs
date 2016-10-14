@@ -2,6 +2,7 @@
 
 const gulp = require('gulp'),
     clean = require('gulp-clean'),
+    eslint = require('gulp-eslint'),
     fs = require('fs'),
     gutil = require('gulp-util'),
     jscs = require('gulp-jscs'),
@@ -58,11 +59,18 @@ gulp.task('dist', function (callback) {
 
 /* linting */
 gulp.task('lint', function () {
+    const src = ['./src/**/*.js', './webpack.config.js'];
+
     function linting () {
         /*jscs*/
-        gulp.src(['./src/**/*.js'])
+        gulp.src(src)
             .pipe(jscs())
-            .pipe(jscs.reporter());
+            .pipe(jscs.reporter())
+            .pipe(eslint())
+            .pipe(eslint.failOnError())
+            .on('error', (error) => {
+                gutil.log('ERROR:', error);
+            });
 
     }
     return linting();
