@@ -1,1 +1,1 @@
-[{"name":"./tmp/bundles/injector.lite.js","size":12789,"chunks":[0],"chunkNames":["injector.lite"],"emitted":true},{"name":"./tmp/bundles/injector.standalone.js","size":288675,"chunks":[1],"chunkNames":["injector.standalone"],"emitted":true}]
+[{"name":"bundles/injector.standalone.js","size":288666,"chunks":[0],"chunkNames":["injector.standalone"],"emitted":true}]

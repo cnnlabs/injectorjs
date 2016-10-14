@@ -1,22 +1,43 @@
 'use strict';
 
 const gulp = require('gulp'),
-    fs = require('fs'),
     clean = require('gulp-clean'),
+    fs = require('fs'),
     gutil = require('gulp-util'),
     jscs = require('gulp-jscs'),
     minify = require('gulp-minify'),
     webpack = require('webpack'),
     webpackComponents = require('./webpack.config.js');
 
-gulp.task('webpack:components', function (callback) {
+function createDist() {
+    gulp.src('bundles/*')
+        .pipe(gulp.dest('dist/bundles'));
+
+    gulp.src('bundles')
+        .pipe(clean());
+
+    gutil.log('bundles', 'moved to dist/bundles');
+
+    gulp.src('src/injector.js')
+        .pipe(minify({
+            ext: {
+                src: '.js',
+                min: '.min.js'
+            }
+        }))
+        .pipe(gulp.dest('dist'));
+
+    gutil.log('src/injector.js', 'moved to dist/');
+}
+
+gulp.task('dist', function (callback) {
     webpack(webpackComponents, function (err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:components', err);
         }
         let bundleStats = stats.toJson();
 
-        fs.writeFile(`./tmp/bundles/manifest.json`, JSON.stringify(bundleStats.assets), (err) => {
+        fs.writeFile(`./dist/manifest.json`, JSON.stringify(bundleStats.assets), (err) => {
             if (err) {
                 console.log(err);
             } else {
@@ -28,19 +49,10 @@ gulp.task('webpack:components', function (callback) {
             colors: true
         }));
 
-        callback();
+        callback(createDist());
     });
-});
 
-gulp.task('assets', function () {
-    gulp.src('tmp/bundles/**/*.*')
-        .pipe(clean())
-        .pipe(minify({
-            ext: {
-                src: '.js',
-                min: '.min.js'
-            }
-        }))
+    gulp.src('bundles')
         .pipe(gulp.dest('dist'));
 });
 
@@ -60,7 +72,7 @@ gulp.task('lint', function () {
 gulp.task('test', ['lint']);
 
 /* Build */
-gulp.task('build', ['test', 'assets', 'webpack:components']);
+gulp.task('build', ['test', 'dist']);
 
 /* Default Task */
 gulp.task('default', ['test']);
