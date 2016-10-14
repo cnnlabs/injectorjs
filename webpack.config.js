@@ -1,6 +1,6 @@
 module.exports = {
     entry: {
-        'injector': './src/entries/injector.standalone.js'
+        injector: './src/entries/injector.standalone.js'
     },
     output: {
         path: __dirname,

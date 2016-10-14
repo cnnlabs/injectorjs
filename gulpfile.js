@@ -8,7 +8,8 @@ const gulp = require('gulp'),
     jscs = require('gulp-jscs'),
     minify = require('gulp-minify'),
     webpack = require('webpack'),
-    webpackComponents = require('./webpack.config.js');
+    webpackComponents = require('./webpack.config.js'),
+    pkg = require('./package.json');
 
 function createDist() {
     gulp.src('bundles/*')
@@ -38,7 +39,7 @@ gulp.task('dist', function (callback) {
         }
         let bundleStats = stats.toJson();
 
-        fs.writeFile(`./dist/manifest.json`, JSON.stringify(bundleStats.assets).replace(/bundles\//g, ''), (err) => {
+        fs.writeFile(`./dist/manifest.${pkg.version}.json`, JSON.stringify(bundleStats.assets).replace(/bundles\//g, ''), (err) => {
             if (err) {
                 console.log(err);
             } else {
