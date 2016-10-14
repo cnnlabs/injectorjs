@@ -12,7 +12,7 @@ const gulp = require('gulp'),
 
 function createDist() {
     gulp.src('bundles/*')
-        .pipe(gulp.dest('dist/bundles'));
+        .pipe(gulp.dest('dist/'));
 
     gulp.src('bundles')
         .pipe(clean());
@@ -38,7 +38,7 @@ gulp.task('dist', function (callback) {
         }
         let bundleStats = stats.toJson();
 
-        fs.writeFile(`./dist/manifest.json`, JSON.stringify(bundleStats.assets), (err) => {
+        fs.writeFile(`./dist/manifest.json`, JSON.stringify(bundleStats.assets).replace(/bundles\//g, ''), (err) => {
             if (err) {
                 console.log(err);
             } else {
