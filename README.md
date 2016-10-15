@@ -2,6 +2,8 @@
 
 A client library that injects javascript bundles into the DOM.
 
+[ ![Codeship Status for cnnlabs/injectorjs](https://codeship.com/projects/d63dde00-72e7-0134-351c-1ae66e72c451/status?branch=master)](https://codeship.com/projects/178762)
+
 ## Why?
 
 Interactions with web content is constantly evolving. This modules abstracts out
