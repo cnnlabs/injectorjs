@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp'),
-    clean = require('gulp-clean'),
     eslint = require('gulp-eslint'),
     fs = require('fs'),
     gutil = require('gulp-util'),
@@ -12,15 +11,7 @@ const gulp = require('gulp'),
     pkg = require('./package.json');
 
 function createDist() {
-    gulp.src('bundles/*')
-        .pipe(gulp.dest('dist/'));
-
-    gulp.src('bundles')
-        .pipe(clean());
-
-    gutil.log('bundles', 'moved to dist/bundles');
-
-    /* version for hosted files */
+    /* bundles that are hosted */
     gulp.src('src/injector.js')
         .pipe(minify({
             ext: {
@@ -28,9 +19,9 @@ function createDist() {
                 min: `.lite.${pkg.version}.min.js`
             }
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('bundles'));
 
-    /* file for bower installs */
+    /* files for dist */
     gulp.src('src/injector.js')
         .pipe(minify({
             ext: {
@@ -50,7 +41,7 @@ gulp.task('dist', function (callback) {
         }
         let bundleStats = stats.toJson();
 
-        fs.writeFile(`./dist/manifest.${pkg.version}.json`, JSON.stringify(bundleStats.assets).replace(/bundles\//g, ''), (err) => {
+        fs.writeFile(`./bundles/manifest.${pkg.version}.json`, JSON.stringify(bundleStats.assets).replace(/bundles\//g, ''), (err) => {
             if (err) {
                 console.log(err);
             } else {
@@ -64,9 +55,6 @@ gulp.task('dist', function (callback) {
 
         callback(createDist());
     });
-
-    gulp.src('bundles')
-        .pipe(gulp.dest('dist'));
 });
 
 /* linting */
