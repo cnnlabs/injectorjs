@@ -1,6 +1,6 @@
 # Future Aligned Injector (FAI)
 
-A client library that injects javascript bundles create with [webpack](https://webpack.github.io/) into the DOM.
+A browser library that injects bundles created with [webpack](https://webpack.github.io/) into the DOM.
 
 [ ![Codeship Status for cnnlabs/injectorjs](https://codeship.com/projects/d63dde00-72e7-0134-351c-1ae66e72c451/status?branch=master)](https://codeship.com/projects/178762)
 
