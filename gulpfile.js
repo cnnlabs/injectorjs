@@ -20,11 +20,22 @@ function createDist() {
 
     gutil.log('bundles', 'moved to dist/bundles');
 
+    /* version for hosted files */
+    gulp.src('src/injector.js')
+        .pipe(minify({
+            ext: {
+                src: `.lite.${pkg.version}.js`,
+                min: `.lite.${pkg.version}.min.js`
+            }
+        }))
+        .pipe(gulp.dest('dist'));
+
+    /* file for bower installs */
     gulp.src('src/injector.js')
         .pipe(minify({
             ext: {
                 src: `.lite.js`,
-                min: `.lite.${pkg.version}.min.js`
+                min: `.lite.min.js`
             }
         }))
         .pipe(gulp.dest('dist'));
