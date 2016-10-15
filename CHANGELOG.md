@@ -1,5 +1,54 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-15, Version 0.8.0, @adslaton
+
+### Notable changes
+
+- create bundles on build and created dist for bundle installs
+- create separate version for bower installs
+- change injector name to injector.lite
+- remove hard coded params in getUrlForFeatureName
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`8cb68d297f`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/8cb68d297f)] - Merge pull request #20 from cnnlabs/feature/webpack-jquery (A.D. Slaton)
+* [[`8af2f513e9`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/8af2f513e9)] - readme update (A.D. Slaton)
+* [[`0ebda1d5a2`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0ebda1d5a2)] - add codeship badge (A.D. Slaton)
+* [[`b8605e9252`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/b8605e9252)] - create bundles on build and created dist for bundle installs (A.D. Slaton)
+* [[`d408ec03bd`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/d408ec03bd)] - create seperate version for bower installs (A.D. Slaton)
+* [[`89037dad89`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/89037dad89)] - change lite version name (A.D. Slaton)
+* [[`f646ff3a61`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/f646ff3a61)] - add bower.json back (A.D. Slaton)
+* [[`dbd0a17863`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/dbd0a17863)] - running a build in dist (A.D. Slaton)
+* [[`5dff933d68`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/5dff933d68)] - adding version to the lite version (A.D. Slaton)
+* [[`4dae5e2d93`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/4dae5e2d93)] - rm old manifest.json (A.D. Slaton)
+* [[`322bcefbfc`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/322bcefbfc)] - change naming convention of manifest.json (A.D. Slaton)
+* [[`7fd209f8f5`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/7fd209f8f5)] - add chunk hashing (A.D. Slaton)
+* [[`55611eb121`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/55611eb121)] - remove example bower (A.D. Slaton)
+* [[`15495e5c22`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/15495e5c22)] - update example 12 to use the hosted injector (A.D. Slaton)
+* [[`068b53e828`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/068b53e828)] - update example 11 to use the hosted injector (A.D. Slaton)
+* [[`0efb3e4718`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0efb3e4718)] - update example 10 to use the hosted injector (A.D. Slaton)
+* [[`235bb9b1b6`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/235bb9b1b6)] - update example 9 to use the hosted injector (A.D. Slaton)
+* [[`46c5d601d2`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/46c5d601d2)] - update example 8 to use the hosted injector (A.D. Slaton)
+* [[`e2929b8dfc`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/e2929b8dfc)] - update example 7 to use the hosted injector (A.D. Slaton)
+* [[`f0572a3945`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/f0572a3945)] - update example 6 to use the hosted injector and jquery (A.D. Slaton)
+* [[`c627086ca7`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/c627086ca7)] - update example 5 to use the hosted injector and jquery (A.D. Slaton)
+* [[`441f7701f0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/441f7701f0)] - update example 4 to use the hosted injector and jquery (A.D. Slaton)
+* [[`85d18a95a8`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/85d18a95a8)] - update example 3 to use the hosted injector and jquery (A.D. Slaton)
+* [[`acd0acfd97`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/acd0acfd97)] - update example 1 and 2 to use the hosted injector and jquery (A.D. Slaton)
+* [[`c373b534e6`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/c373b534e6)] - remove dist bundles (A.D. Slaton)
+* [[`062a7c96bb`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/062a7c96bb)] - add eslint (A.D. Slaton)
+* [[`a9602d83f8`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/a9602d83f8)] - change injector name to injector.lite (A.D. Slaton)
+* [[`05ad8d9482`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/05ad8d9482)] - update dist to have a bundle and the injector (A.D. Slaton)
+* [[`d5f8054a77`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/d5f8054a77)] - add a change to the readme to test deploymnets (A.D. Slaton)
+* [[`4d7802f165`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/4d7802f165)] - update build process to create a bundle with and without dependencies (A.D. Slaton)
+* [[`aff31f9a83`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/aff31f9a83)] - remove video references (A.D. Slaton)
+* [[`d50e37b3e1`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/d50e37b3e1)] - remove hard coded params in getUrlForFeatureName (A.D. Slaton)
+
 ## 2016-10-12, Version 0.7.0, @adslaton
 
 ### Notable changes
