@@ -23,7 +23,7 @@ function createDist() {
     gulp.src('src/injector.js')
         .pipe(minify({
             ext: {
-                src: `.lite.${pkg.version}.js`,
+                src: `.lite.js`,
                 min: `.lite.${pkg.version}.min.js`
             }
         }))
