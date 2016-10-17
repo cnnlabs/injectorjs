@@ -19,7 +19,7 @@ function createDist() {
                 min: `.lite.${pkg.version}.min.js`
             }
         }))
-        .pipe(gulp.dest('bundles'));
+        .pipe(gulp.dest('assets/js'));
 
     /* files for dist */
     gulp.src('src/injector.js')
