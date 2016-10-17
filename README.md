@@ -15,6 +15,8 @@ The smallest version of the injector and is located in `dist/`.
 
 #### Hosted
 
+Use this url in order to pull injector from a CDN:
+
 `registry.api.cnn.com/bundles/injector/injector.lite.<release.version>.min.js`
 
 #### Bower
@@ -26,9 +28,10 @@ $ bower install fa-injector
 #### Requirements
 
 - jquery 1.12.3
+- node v6.6.0
 - the client must define `window.FAI.bundleHost`
-- the client must define `window.FAI.WebpackAssets`
-- if you are adding event listeners, then you must resolve the footer
+- the client should define a `window.FAI.WebpackAssets` if they are not hosting a manifest.json on a CDN.
+- if you are adding a footer deferred object to activate the event listeners, then you must resolve the deferred object
 
 ### Injector Bundle
 
