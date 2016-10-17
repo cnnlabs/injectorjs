@@ -1,5 +1,23 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-75, Version 0.9.0, @adslaton
+
+### Notable changes
+
+- update injector to place files in the assets directory of the registry
+- corrected the main readme description
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+* [[`5129566feb`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/5129566feb)] - Merge pull request #23 from cnnlabs/feature/create-assets-dir (A.D. Slaton)
+* [[`0770bb33f0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0770bb33f0)] - Merge pull request #21 from cnnlabs/feature/example-update (A.D. Slaton)
+* [[`2db1ae7796`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/2db1ae7796)] - update injector to place files in the assets directory of the registry (A.D. Slaton)
+* [[`c8b9beb4a4`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/c8b9beb4a4)] - corrected the main readme description (A.D. Slaton)
+* [[`77070052c6`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/77070052c6)] - readme updates (A.D. Slaton)
+
 ## 2016-10-15, Version 0.8.0, @adslaton
 
 ### Notable changes
