@@ -15,8 +15,6 @@ The smallest version of the injector and is located in `dist/`.
 
 #### Hosted
 
-Use this url in order to pull injector from a CDN:
-
 `registry.api.cnn.com/bundles/injector/injector.lite.<release.version>.min.js`
 
 #### Bower
