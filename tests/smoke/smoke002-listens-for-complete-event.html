@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Injectorjs - Injector Complete Event</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+            document.addEventListener(
+                'injectorReady',
+                function (e) {
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                        document.write("<div id='injector-success'>Injector Ready Captured And Processed</div>");
+                    });
+                });
+        </script>
+        <script src="../../src/injector.js"></script>
+    </head>
+    <body></body>
+</html>
