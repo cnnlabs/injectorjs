@@ -19,6 +19,10 @@ URL for unbundled version
 
 `registry.api.cnn.com/assets/js/injector.lite.0.9.0.min.js`
 
+URL for bundled version
+
+`registry.api.cnn.io/bundles/injectorjs/0.9.0/injector`
+
 #### Bower
 
 ```
@@ -35,7 +39,7 @@ $ bower install fa-injector
 
 ### Injector Bundle
 
-A bundled version of the injector that has jquery bundled. This is the largest
+A bundled version of the injector that has jquery bundled is the largest
 version of this library. The release manifest has the bundle version to use.
 
 ### Download
