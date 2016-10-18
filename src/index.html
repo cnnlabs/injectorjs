@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+        document.addEventListener('injectorReady', function (e) { alert('The Injector Is Ready'); }, false);
+
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
+            };
+        </script>
+        <script src="injector.js"></script>
+    </head>
+    <body>
+        <h1>FA Injector JS</h1>
+        <h2>Inject js with javascript</h2>
+        <div id="output"></div>
+        <script>
+            FAI.INJECTOR.loadFeature('inject');
+        </script>
+    </body>
+</html>

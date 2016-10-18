@@ -311,5 +311,5 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         return promise;
     };
 
-    jQuery( document ).trigger( "injectorReady" );
+    document.dispatchEvent(new Event('injectorReady'));
 })(window.FAI, jQuery);
