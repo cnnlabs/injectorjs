@@ -15,7 +15,13 @@ The smallest version of the injector and is located in `dist/`.
 
 #### Hosted
 
-`registry.api.cnn.com/bundles/injector/injector.lite.<release.version>.min.js`
+URL for unbundled version
+
+`registry.api.cnn.com/assets/js/injector.lite.0.9.0.min.js`
+
+URL for bundled version
+
+`registry.api.cnn.io/bundles/injectorjs/0.9.0/injector`
 
 #### Bower
 
@@ -25,19 +31,16 @@ $ bower install fa-injector
 
 #### Requirements
 
-- jquery 1.12.3
+- Include jquery 1.12.3 with unbundled version of injector
+- node v6.6.0
 - the client must define `window.FAI.bundleHost`
-- the client must define `window.FAI.WebpackAssets`
-- if you are adding event listeners, then you must resolve the footer
+- the client should define a `window.FAI.WebpackAssets` if they are not hosting a manifest.json on a CDN.
+- if you are adding a footer deferred object to activate the event listeners, then you must resolve the deferred object
 
 ### Injector Bundle
 
-A bundled version of the injector that has jquery bundled. This is the largest
+A bundled version of the injector that has jquery bundled is the largest
 version of this library. The release manifest has the bundle version to use.
-
-#### Hosted
-
-`registry.api.cnn.com/bundles/injector/manifest.<release.version>.json`
 
 ### Download
 
