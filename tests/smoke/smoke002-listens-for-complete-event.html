@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Injectorjs - Injector Complete Event</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script src="../../src/injector.js" async></script>
+        <script>
+            function loadedHandler () {
+                document.body.innerHTML = "<div id='injector-success'>Injector Ready Captured And Processed</div>";
+            }
+
+            document.addEventListener(
+                'injectorReady',
+                function (e) {
+                    if(document.readyState === 'interactive' || document.readyState === "complete") {
+                        loadedHandler();
+                    } else {
+                        document.addEventListener("DOMContentLoaded", loadedHandler);
+                    }
+                });
+        </script>
+
+    </head>
+    <body></body>
+</html>

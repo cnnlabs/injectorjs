@@ -310,4 +310,6 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         }
         return promise;
     };
+
+    document.dispatchEvent(new Event('injectorReady'));
 })(window.FAI, jQuery);

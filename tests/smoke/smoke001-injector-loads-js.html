@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Injectorjs</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'js/',
+                WebpackAssets: [{'name':'resource01.js','chunkNames':['resource01']}]
+            };
+        </script>
+        <script src="../../src/injector.js"></script>
+    </head>
+    <body>
+        <script>
+            FAI.INJECTOR.loadFeature('resource01');
+        </script>
+    </body>
+</html>
