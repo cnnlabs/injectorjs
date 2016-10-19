@@ -6,6 +6,7 @@ const gulp = require('gulp'),
     gutil = require('gulp-util'),
     jscs = require('gulp-jscs'),
     minify = require('gulp-minify'),
+    replace = require('gulp-replace'),
     webpack = require('webpack'),
     webpackComponents = require('./webpack.config.js'),
     pkg = require('./package.json');
@@ -48,6 +49,10 @@ gulp.task('dist', function (callback) {
                 console.log('manifest file saved');
             }
         });
+
+        gulp.src(['tests/smoke/js/raw/inject.js'])
+            .pipe(replace(/\[assets\]/g, JSON.stringify(bundleStats.assets)))
+            .pipe(gulp.dest('tests/smoke/js/'));
 
         gutil.log('[webpack:components]', stats.toString({
             colors: true

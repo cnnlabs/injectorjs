@@ -1,6 +1,32 @@
 # Future Aligned Injector (FAI) Changelog
 
-## 2016-10-75, Version 0.9.0, @adslaton
+## 2016-10-19, Version 0.10.0, @adslaton
+
+### Notable changes
+
+- Adds a basic smoke test and a test for the injector ready event
+- Adds non-jquery custom event and a test file
+- Added more details for changes to README
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+* [[`f6fb8e49a0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/f6fb8e49a0)] - Merge pull request #25 from cnnlabs/feature/injectorReady (A.D. Slaton)
+* [[`1a75f70c67`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/1a75f70c67)] - Adds fix requested in PR (c-expansion-mtrujill_turner)
+* [[`9a55d8ebb2`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/9a55d8ebb2)] - Merge pull request #24 from cnnlabs/feature/update-readme (A.D. Slaton)
+* [[`0bfcdcc0a4`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0bfcdcc0a4)] - Removes a misplaced test file. (c-expansion-mtrujill_turner)
+* [[`dd7c82890d`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/dd7c82890d)] - Adds a basic smoke test and a test for the injector ready event. (c-expansion-mtrujill_turner)
+* [[`e38e86b69e`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/e38e86b69e)] - added url for bundled version (pdinh_turner)
+* [[`845c4c3d06`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/845c4c3d06)] - updated to new cdn url (pdinh_turner)
+* [[`fde3df776b`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/fde3df776b)] - Adds non-jquery custom event and a test file the need to be removed before the PR. (marty_trujillo)
+* [[`9c2db6ff67`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/9c2db6ff67)] - Merge branch 'develop' into injectorReady (marty_trujillo)
+* [[`48a37444f5`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/48a37444f5)] - updated README with new cdn url and details about cdn (pdinh_turner)
+* [[`bc9beb82a5`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/bc9beb82a5)] - removed cdn comment (pdinh_turner)
+* [[`e5ed8534cc`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/e5ed8534cc)] - added more details for changes to README (pdinh_turner)
+
+## 2016-10-15, Version 0.9.0, @adslaton
 
 ### Notable changes
 

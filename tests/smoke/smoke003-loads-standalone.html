@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Injectorjs - Injector Complete Event</title>
+        <script>
+            var domLoaded = false,
+                injectorLoaded = false;
+
+            function flagEvent (dom, injector) {
+                if (dom) domLoaded = true;
+                if (injector) injectorLoaded = true;
+
+                if (domLoaded && injectorLoaded) {
+                    document.body.innerHTML = "<div id='injector-success'>Injector Ready Captured And Processed</div>";
+                }
+            }
+
+            document.addEventListener(
+                'injectorReady',
+                function (e) {
+                    flagEvent(false, true);
+                }
+            );
+
+            document.addEventListener(
+                'DOMContentLoaded',
+                function(e) {
+                    flagEvent(true, false);
+                }
+            );
+        </script>
+        <script src="js/inject.js"></script>
+    </head>
+    <body></body>
+</html>
