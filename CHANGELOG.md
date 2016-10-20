@@ -1,5 +1,19 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-20, Version 0.10.1, @adslaton
+
+### Notable changes
+
+- Minified injector webpack bundle
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+* [[`50e4ce7542`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/50e4ce7542)] - Merge pull request #31 from cnnlabs/feature/minify-standalone-injector (A.D. Slaton)
+* [[`0a30e1c33e`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0a30e1c33e)] - minified injector webpack bundle (pdinh_turner)
+
 ## 2016-10-19, Version 0.10.0, @adslaton
 
 ### Notable changes
