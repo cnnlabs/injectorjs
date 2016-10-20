@@ -1,6 +1,6 @@
 {
   "name": "injectorjs",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Future Aligned Injector (FAI) - A client library that injects javascript bundles into the DOM.",
   "scripts": {
     "build": "gulp build",
