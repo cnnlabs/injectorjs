@@ -133,6 +133,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     };
 
     NS.INJECTOR = NS.INJECTOR || {};
+    NS.INJECTOR.readyState = 'loading';
 
     /**
      * Creates a deferred object for a given feature name.
@@ -311,5 +312,6 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         return promise;
     };
 
+    NS.INJECTOR.readyState = 'ready';
     document.dispatchEvent(new Event('injectorReady'));
 })(window.FAI, jQuery);
