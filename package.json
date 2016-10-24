@@ -24,6 +24,7 @@
     "gulp-eslint": "3.0.1",
     "gulp-minify": "0.0.14",
     "gulp-jscs": "4.0.0",
+    "gulp-replace": "0.5.4",
     "webpack": "1.13.2"
   },
   "keywords": [
