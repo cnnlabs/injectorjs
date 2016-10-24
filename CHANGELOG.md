@@ -1,5 +1,20 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-10-24, Version 0.10.2, @adslaton
+
+### Notable changes
+
+- Add standalone smoke tests
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`b1b0de5ac0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/b1b0de5ac0)] - Merge pull request #30 from cnnlabs/feature/smokeTestStandalone (A.D. Slaton)
+
 ## 2016-10-20, Version 0.10.1, @adslaton
 
 ### Notable changes
@@ -10,6 +25,8 @@
 
 See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
 current list of known issues.
+
+### Commits
 
 * [[`50e4ce7542`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/50e4ce7542)] - Merge pull request #31 from cnnlabs/feature/minify-standalone-injector (A.D. Slaton)
 * [[`0a30e1c33e`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0a30e1c33e)] - minified injector webpack bundle (pdinh_turner)
@@ -26,6 +43,8 @@ current list of known issues.
 
 See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
 current list of known issues.
+
+### Commits
 
 * [[`f6fb8e49a0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/f6fb8e49a0)] - Merge pull request #25 from cnnlabs/feature/injectorReady (A.D. Slaton)
 * [[`1a75f70c67`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/1a75f70c67)] - Adds fix requested in PR (c-expansion-mtrujill_turner)
@@ -51,6 +70,8 @@ current list of known issues.
 
 See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
 current list of known issues.
+
+### Commits
 
 * [[`5129566feb`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/5129566feb)] - Merge pull request #23 from cnnlabs/feature/create-assets-dir (A.D. Slaton)
 * [[`0770bb33f0`](https://github.com/git@github.com:cnnlabes/injectorjs/commit/0770bb33f0)] - Merge pull request #21 from cnnlabs/feature/example-update (A.D. Slaton)

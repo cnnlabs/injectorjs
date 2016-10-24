@@ -1,6 +1,6 @@
 {
   "name": "injectorjs",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "dependencies": {
     "jquery": "1.12.3"
   },
