@@ -17,18 +17,26 @@
             };
         </script>
         <script src="http://registry.api.cnn.io/assets/js/injector.lite.0.10.0.min.js"></script>
+        <div id="output"></div>
         <script>
             var featureProm = FAI.INJECTOR.loadFeature('inject');
             describe('loadFeature', function () {
                 it('should return a promise', function () {
-                    featureProm.should.exist;
+                    featureProm.should.be.Promise();
                 });
             });
             var executeProm = FAI.INJECTOR.executeFeature('inject');
             describe('executeFeature', function () {
                 it('should return a promise', function () {
-                    executeProm.should.exist;
+                    executeProm.should.be.Promise();
                 });
+            });
+            describe('inject library', function () {
+               it('should pull down bundle', function() {
+                   jQuery(document).ready(function() {
+                       jQuery('#output').html().should.exist;
+                   });
+               });
             });
         </script> 
         <script>
