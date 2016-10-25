@@ -80,7 +80,7 @@ gulp.task('lint', function () {
 /*mocha test*/
 gulp.task('mocha test', function () {
     return gulp
-        .src('tests/mocha/test.html')
+        .src('tests/mocha/*.html')
         .pipe(mochaPhantomJS());
 });
 
