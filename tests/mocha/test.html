@@ -33,8 +33,8 @@
             });
             describe('inject library', function () {
                it('should pull down bundle', function() {
-                   jQuery(document).ready(function() {
-                       jQuery('#output').html().should.be.String();
+                   jQuery(window).load(function() {
+                       jQuery('#output').text().should.be.length(38);
                    });
                });
             });

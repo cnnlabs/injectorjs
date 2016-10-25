@@ -25,7 +25,7 @@
             describe('inject library', function () {
                it('should pull down bundle', function() {
                    jQuery(window).load(function() {
-                       jQuery('#output').html().should.be.String();
+                       jQuery('#output').text().should.be.length(38);
                    });
                });
             });
