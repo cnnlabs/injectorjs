@@ -6,6 +6,7 @@ const gulp = require('gulp'),
     gutil = require('gulp-util'),
     jscs = require('gulp-jscs'),
     minify = require('gulp-minify'),
+    mochaPhantomJS = require('gulp-mocha-phantomjs'),
     webpack = require('webpack'),
     webpackComponents = require('./webpack.config.js'),
     pkg = require('./package.json');
@@ -76,8 +77,15 @@ gulp.task('lint', function () {
     return linting();
 });
 
+/*mocha test*/
+gulp.task('mocha test', function () {
+    return gulp
+        .src('tests/mocha/test.html')
+        .pipe(mochaPhantomJS());
+});
+
 /* Test */
-gulp.task('test', ['lint']);
+gulp.task('test', ['lint', 'mocha test']);
 
 /* Build */
 gulp.task('build', ['test', 'dist']);

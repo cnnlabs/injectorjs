@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Mocha</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+    </head>
+    <body>
+        <script src="../../node_modules/should/should.js"></script>
+        <script src="../../node_modules/mocha/mocha.js"></script>
+        <script>mocha.setup('bdd')</script> 
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
+            };
+        </script>
+        <script src="http://registry.api.cnn.io/assets/js/injector.lite.0.10.0.min.js"></script>
+        <script>
+            var prom = FAI.INJECTOR.loadFeature('inject');
+            describe('true', function () {
+                it('should be true', function () {
+                    prom.should.exist;
+                });
+            });
+        </script> 
+        <script>
+            mocha.run();
+        </script> 
+    </body>
+</html>
