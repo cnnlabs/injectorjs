@@ -25,19 +25,17 @@
                 it('should return a promise', function () {
                     featureProm.should.be.Promise();
                 });
+                it('should load library', function () {
+                    featureProm.then(function () {
+                        jQuery('#output').text().should.be.length(38);
+                    });
+                });
             });
             var executeProm = FAI.INJECTOR.executeFeature('inject');
             describe('executeFeature', function () {
                 it('should return a promise', function () {
                     executeProm.should.be.Promise();
                 });
-            });
-            describe('inject library', function () {
-               it('should pull down bundle', function() {
-                   jQuery(window).load(function() {
-                       jQuery('#output').text().should.be.length(38);
-                   });
-               });
             });
         </script> 
         <script>
