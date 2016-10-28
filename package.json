@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:cnnlabes/injectorjs.git"
+    "url": "git@github.com:cnnlabs/injectorjs.git"
   },
   "homepage": "https://github.com/cnnlabs/injectorjs",
   "engines": {
