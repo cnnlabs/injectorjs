@@ -20,7 +20,8 @@
         <div id="output"></div>
         <div id="mocha"></div>
         <script>
-            var featureProm = FAI.INJECTOR.loadFeature('inject');
+            var featureProm = FAI.INJECTOR.loadFeature('inject'),
+                executeProm = FAI.INJECTOR.executeFeature('inject');
             describe('loadFeature', function () {
                 it('should return a promise', function () {
                     featureProm.should.be.Promise();
@@ -31,7 +32,6 @@
                     });
                 });
             });
-            var executeProm = FAI.INJECTOR.executeFeature('inject');
             describe('executeFeature', function () {
                 it('should return a promise', function () {
                     executeProm.should.be.Promise();
