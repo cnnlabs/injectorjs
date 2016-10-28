@@ -24,12 +24,12 @@
 
 
             if( typeof FAI === 'undefined' || FAI === null ){
-              document.addEventListener("DOMContentLoaded", injectorLoaded);
+              document.addEventListener("injectorReady", injectorLoaded);
             } else {
               if (FAI !== null && FAI.INJECTOR && FAI.INJECTOR.readyState) {
                 injectorReady = true;
               } else {
-                document.addEventListener("DOMContentLoaded", injectorLoaded);
+                document.addEventListener("injectorReady", injectorLoaded);
               }
             }
 
