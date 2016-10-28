@@ -37,7 +37,7 @@
             });
             describe('inject library', function () {
                it('should pull down bundle', function() {
-                   jQuery(window).load(function() {
+                   sourceProm.then(function() {
                        jQuery('#output').text().should.be.length(38);
                    });
                });
