@@ -23,6 +23,12 @@
             FAI.INJECTOR.registerEvents(['DOMContentLoaded']);
         </script>
         <script>
+            var hostProm = FAI.INJECTOR.loadFeatureForHost('inject','bundles/inject.js');
+            describe('loadFeatureForHost', function () {
+                it('should return a promise', function () {
+                    hostProm.should.be.Promise();
+                });
+            })
             describe('inject library', function () {
                it('should pull down bundle', function() {
                    jQuery(window).load(function() {
