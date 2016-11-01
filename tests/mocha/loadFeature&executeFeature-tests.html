@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Mocha</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
+    </head>
+    <body>
+        <script src="../../node_modules/should/should.js"></script>
+        <script src="../../node_modules/mocha/mocha.js"></script>
+        <script>mocha.setup('bdd')</script> 
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script>
+            window.FAI = {
+                bundleHost: 'bundles/',
+                WebpackAssets: [{'name':'inject.js','chunkNames':['inject']}]
+            };
+        </script>
+        <script src="../../src/injector.js"></script>
+        <div id="output"></div>
+        <div id="mocha"></div>
+        <script>
+            var featureProm = FAI.INJECTOR.loadFeature('inject'),
+                executeProm = FAI.INJECTOR.executeFeature('inject');
+            describe('loadFeature', function () {
+                it('should return a promise', function () {
+                    featureProm.should.be.Promise();
+                });
+                it('should load library', function () {
+                    featureProm.then(function () {
+                        jQuery('#output').text().should.be.length(38);
+                    });
+                });
+            });
+            describe('executeFeature', function () {
+                it('should return a promise', function () {
+                    executeProm.should.be.Promise();
+                });
+            });
+        </script> 
+        <script>
+            mocha.run();
+        </script> 
+    </body>
+</html>
