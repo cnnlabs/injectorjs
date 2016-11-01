@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Injectorjs - Injector Complete Event</title>
+
+        <script>
+            var injectorReady = false;
+            var domReady = false;
+
+            function domLoaded () {
+              domReady = true;
+              loadedHandler();
+            }
+
+            function injectorLoaded () {
+              injectorReady = true;
+              loadedHandler();
+            }
+
+            function loadedHandler () {
+              if (injectorReady && domReady) {
+                document.body.innerHTML = "<div id='injector-success'>Injector Loaded Event And Document Loaded Event Used</div>";
+              }
+            }
+
+
+            if( typeof FAI === 'undefined' || FAI === null ){
+              document.addEventListener("injectorReady", injectorLoaded);
+            } else {
+              if (FAI !== null && FAI.INJECTOR && FAI.INJECTOR.readyState) {
+                injectorReady = true;
+              } else {
+                document.addEventListener("injectorReady", injectorLoaded);
+              }
+            }
+
+            if (document.readyState === 'interactive' || document.readyState === "complete") {
+              domReady = true;
+            } else {
+              document.addEventListener("DOMContentLoaded", domLoaded);
+            }
+            loadedHandler();
+
+        </script>
+
+    </head>
+    <body>
+    </body>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="../../src/injector.js" async></script>
+</html>
