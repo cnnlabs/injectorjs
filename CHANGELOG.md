@@ -1,5 +1,41 @@
 # Future Aligned Injector (FAI) Changelog
 
+## 2016-11-06, Version 0.11.0, @adslaton
+
+### Notable changes
+
+- Add a ready state property to the injector
+- Create unit tests
+
+### Known issues
+
+See https://github.com/cnnlabs/cnn-hope/labels/defect for complete and
+current list of known issues.
+
+### Commits
+
+* [[`a234aa554d`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/a234aa554d)] - Merge pull request #34 from cnnlabs/feature/injectorReadyState (A.D. Slaton)
+* [[`7937be7a01`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/7937be7a01)] - Merge pull request #33 from cnnlabs/feature/create-unit-tests (A.D. Slaton)
+* [[`f623792483`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/f623792483)] - renamed files (pdinh_turner)
+* [[`5e412d8784`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/5e412d8784)] - Fix for smoke test bugs discovered during the PR. (marty_trujillo)
+* [[`185af3fc07`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/185af3fc07)] - bundled variables (pdinh_turner)
+* [[`34f43bb8b5`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/34f43bb8b5)] - fixed typo (pdinh_turner)
+* [[`4aba5c2fd2`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/4aba5c2fd2)] - make test run after promise resolves (pdinh_turner)
+* [[`d0715fefaa`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/d0715fefaa)] - added test for loadFeatureSource (pdinh_turner)
+* [[`8c636aee52`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/8c636aee52)] - added test for loadFeatureForHost (pdinh_turner)
+* [[`5e4d2c60f9`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/5e4d2c60f9)] - upload bundle for mocha (pdinh_turner)
+* [[`78e9ffd438`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/78e9ffd438)] - resolved conflict for package.json (pdinh_turner)
+* [[`bc5628f4c3`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/bc5628f4c3)] - resolved merge conflicts (pdinh_turner)
+* [[`8f45100221`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/8f45100221)] - changed test to run after promise resolves (pdinh_turner)
+* [[`7dce79eabe`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/7dce79eabe)] - fixed html tag (pdinh_turner)
+* [[`3060ac8259`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/3060ac8259)] - used injector in folder (pdinh_turner)
+* [[`6a9ae2da11`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/6a9ae2da11)] - added div with id mocha for testing purposes (pdinh_turner)
+* [[`25caf99abf`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/25caf99abf)] - fixed error in waiting for bundle to load (pdinh_turner)
+* [[`b92e7f21cd`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/b92e7f21cd)] - added test for bundle pulled down by event listener (pdinh_turner)
+* [[`7362ee1724`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/7362ee1724)] - added test to make sure bundle ran (pdinh_turner)
+* [[`9879f83f9b`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/9879f83f9b)] - created another test for executeFeature (pdinh_turner)
+* [[`1400fc42a2`](https://github.com/git@github.com:cnnlabs/injectorjs/commit/1400fc42a2)] - created test to see injector returns promise (pdinh_turner)
+
 ## 2016-10-24, Version 0.10.2, @adslaton
 
 ### Notable changes

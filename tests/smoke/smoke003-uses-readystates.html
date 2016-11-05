@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Injectorjs - Injector Complete Event</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script src="../../src/injector.js"></script>
+    </head>
+    <body>
+    </body>
+      <script>
+          var injectorReady = false;
+          var domReady = false;
+
+          function domLoaded () {
+            domReady = true;
+            loadedHandler();
+          }
+
+          function injectorLoaded () {
+            injectorReady = true;
+            loadedHandler();
+          }
+
+          function loadedHandler () {
+            if (injectorReady && domReady) {
+              document.body.innerHTML = "<div id='injector-success'>Injector ReadyState And Document ReadyState Used</div>";
+            }
+          }
+
+
+          if( typeof FAI === 'undefined' || FAI === null ){
+            document.addEventListener("injectorReady", injectorLoaded);
+          } else {
+            if (FAI !== null && FAI.INJECTOR && FAI.INJECTOR.readyState) {
+              injectorReady = true;
+            } else {
+              document.addEventListener("injectorReady", injectorLoaded);
+            }
+          }
+
+          if (document.readyState === 'interactive' || document.readyState === "complete") {
+            domReady = true;
+          } else {
+            document.addEventListener("DOMContentLoaded", domLoaded);
+          }
+          loadedHandler();
+
+      </script>
+</html>
