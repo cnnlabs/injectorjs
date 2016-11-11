@@ -39,10 +39,8 @@
           if( typeof FAI === 'undefined' || FAI === null ){
             document.addEventListener("injectorReady", injectorLoaded);
           } else {
-            if (FAI !== null && FAI.INJECTOR && FAI.INJECTOR.readyState) {
+            if (FAI !== null && FAI.INJECTOR && FAI.INJECTOR.readyState === 'ready') {
               injectorReady = true;
-            } else {
-              document.addEventListener("injectorReady", injectorLoaded);
             }
           }
 
