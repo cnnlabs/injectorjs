@@ -5,7 +5,10 @@
         <script src="../../src/injector.js" async></script>
         <script>
             function loadedHandler () {
-                document.body.innerHTML = "<div id='injector-success'>Injector Ready Captured And Processed</div>";
+                var newDiv = document.createElement("div");
+                newDiv.id = "injector-success";
+                newDiv.innerHTML = "Injector Ready Captured And Processed";
+                document.body.appendChild(newDiv);
             }
 
             document.addEventListener(
@@ -20,5 +23,12 @@
         </script>
 
     </head>
-    <body></body>
+    <body>
+
+        <h1>Smoke Test 002</h1>
+        <p>
+            Waits For The injectorReady event before attempting to execute the load handler.
+        </p>
+
+    </body>
 </html>

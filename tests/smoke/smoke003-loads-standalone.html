@@ -10,7 +10,10 @@
                 if (injector) injectorLoaded = true;
 
                 if (domLoaded && injectorLoaded) {
-                    document.body.innerHTML = "<div id='injector-success'>Injector Ready Captured And Processed</div>";
+                    var newDiv = document.createElement("div");
+                    newDiv.id = "injector-success";
+                    newDiv.innerHTML = "Injector Ready Captured And Processed";
+                    document.body.appendChild(newDiv);
                 }
             }
 
@@ -30,5 +33,10 @@
         </script>
         <script src="js/inject.js"></script>
     </head>
-    <body></body>
+    <body>
+        <h1>Smoke Test 003 Ready State (Stand Alone)</h1>
+        <p>
+            Ready State - Uses the standalone (no JQuery On The Namespace) injector.
+        </p>
+    </body>
 </html>

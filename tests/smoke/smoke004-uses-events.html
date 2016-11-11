@@ -18,7 +18,10 @@
 
             function loadedHandler () {
               if (injectorReady && domReady) {
-                document.body.innerHTML = "<div id='injector-success'>Injector Loaded Event And Document Loaded Event Used</div>";
+                  var newDiv = document.createElement("div");
+                  newDiv.id = "injector-success";
+                  newDiv.innerHTML = "Injector Loaded Event And Document Loaded Event Used";
+                  document.body.appendChild(newDiv);
               }
             }
 
@@ -44,6 +47,12 @@
 
     </head>
     <body>
+
+        <h1>Smoke Test 004</h1>
+        <p>
+            Ready State - The Injector Is NOT Loaded And Ready When The Script Is Executed.
+        </p>
+
     </body>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <script src="../../src/injector.js" async></script>

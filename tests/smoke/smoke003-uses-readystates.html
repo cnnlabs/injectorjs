@@ -5,6 +5,12 @@
         <script src="../../src/injector.js"></script>
     </head>
     <body>
+
+        <h1>Smoke Test 003 - Ready State</h1>
+        <p>
+            Ready State - The Injector Is Loaded And Ready When The Script Is Executed.
+        </p>
+
     </body>
       <script>
           var injectorReady = false;
@@ -22,7 +28,10 @@
 
           function loadedHandler () {
             if (injectorReady && domReady) {
-              document.body.innerHTML = "<div id='injector-success'>Injector ReadyState And Document ReadyState Used</div>";
+                var newDiv = document.createElement("div");
+                newDiv.id = "injector-success";
+                newDiv.innerHTML = "Injector ReadyState And Document ReadyState Used";
+                document.body.appendChild(newDiv);
             }
           }
 
