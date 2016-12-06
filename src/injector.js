@@ -319,7 +319,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         event = document.createEvent('Event');
         event.initEvent('injectorReady', false, true);
     } else {
-        event = newEvent('injectorReady');
+        event = new Event('injectorReady');
     }
     document.dispatchEvent(event);
 })(window.FAI, jQuery);
