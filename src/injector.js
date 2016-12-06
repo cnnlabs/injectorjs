@@ -321,5 +321,5 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     } else {
         event = newEvent('injectorReady');
     }
-    document.dispatchEvent(new Event('injectorReady'));
+    document.dispatchEvent(event);
 })(window.FAI, jQuery);
