@@ -25,6 +25,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
         featureLoadSuccess,
         scanForFeature,
         loadUrl,
+        evt,
         getBundleNameForFeatureName;
 
     /**
@@ -313,5 +314,12 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
     };
 
     NS.INJECTOR.readyState = 'ready';
-    document.dispatchEvent(new Event('injectorReady'));
+    /* Not supposed to need to do this for IE11, but apparently we do... */
+    if (document.createEvent) {
+        evt = document.createEvent('Event');
+        evt.initEvent('injectorReady', false, true);
+    } else {
+        evt = new Event('injectorReady');
+    }
+    document.dispatchEvent(evt);
 })(window.FAI, jQuery);
