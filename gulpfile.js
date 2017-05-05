@@ -63,6 +63,18 @@ gulp.task('dist', function (callback) {
     });
 });
 
+gulp.task('develop', function () {
+    webpack(webpackComponents).watch(1000, function (err, stats) {
+        if (err) {
+            throw new gutil.PluginError('webpack:components', err);
+        }
+
+        gutil.log('[webpack:components]', stats.toString({
+            colors: true
+        }));
+    });
+});
+
 /* linting */
 gulp.task('lint', function () {
     const src = ['./src/**/*.js', './webpack.config.js'];
