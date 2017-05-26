@@ -41,7 +41,15 @@ let envWebpack,
                     NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
                 }
             })
-        ]
+        ],
+        devServer: {
+            contentBase: path.join(__dirname, 'demos'),
+            compress: (process.env.NODE_ENV === 'development'),
+            port: process.env.PORT || 5000,
+            host: '0.0.0.0',
+            inline: false,
+            disableHostCheck: true
+        }
     };
 
 

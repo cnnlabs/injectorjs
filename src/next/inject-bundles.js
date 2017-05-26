@@ -12,6 +12,7 @@
 
 (function (NS) {
     'use strict';
+
     var assets = NS.WebpackAssets || [],
         features = {},
         nsFeatures = {},

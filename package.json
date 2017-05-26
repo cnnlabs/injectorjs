@@ -6,7 +6,8 @@
     "build": "gulp build",
     "develop": "gulp develop",
     "generate-changelog": "changelog-maker --group",
-    "test": "gulp test"
+    "test": "gulp test",
+    "demos": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,6 @@
     "npm": "3.10.8"
   },
   "dependencies": {
-    "es6-promise": "4.1.0",
     "promise-polyfill": "6.0.2",
     "whatwg-fetch": "2.0.3"
   },

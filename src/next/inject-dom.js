@@ -1,10 +1,12 @@
 (function (NS) {
-    NS.utils = {
+    'use strict';
+
+    NS.DOM = {
         /**
          * Get all elements from DOM, return proper array instead of NodeList.
          * Browser suuport : https://caniuse.com/#feat=queryselector
          */
-        getDOMElements: function (selector) {
+        getElements: function (selector) {
             const elemMatches = document.querySelectorAll(selector) || [];
             let elems = [];
 
@@ -15,7 +17,7 @@
             return elems;
         },
 
-        getDOMElement: function (selector) {
+        getElement: function (selector) {
             return document.querySelector(selector);
         }
     };
