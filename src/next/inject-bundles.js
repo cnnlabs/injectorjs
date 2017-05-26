@@ -1,4 +1,3 @@
-/* jshint browser: true, node: false */
 /* global jQuery */
 
 /*
@@ -8,10 +7,8 @@
  * There are a lot of dependencies in the application.  This function returns
  * a promise for them.  It also loads libraries that have not been loaded.
  *
- *
+ * @todo Can es6 takeover for jQuery?
  */
-window.FAI = window.FAI || {};
-window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 (function (NS) {
     'use strict';

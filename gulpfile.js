@@ -84,7 +84,7 @@ gulp.task('lint', function () {
         gulp.src(src)
             .pipe(jscs())
             .pipe(jscs.reporter())
-            .pipe(eslint())
+            .pipe(eslint({ configFile: '.eslint-es6.json' }))
             .pipe(eslint.failOnError())
             .on('error', (error) => {
                 gutil.log('ERROR:', error);
