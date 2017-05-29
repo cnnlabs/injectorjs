@@ -33,7 +33,27 @@ function createDist() {
         }))
         .pipe(gulp.dest('dist'));
 
-    gutil.log('src/injector.js', 'moved to dist/');
+    /* bundles that are hosted */
+    gulp.src('bundles/injector2.js')
+        .pipe(minify({
+            ext: {
+                src: `.${pkg.version}.js`,
+                min: `.${pkg.version}.min.js`
+            }
+        }))
+        .pipe(gulp.dest('assets/js'));
+
+    /* files for dist */
+    gulp.src('bundles/injector2.js')
+        .pipe(minify({
+            ext: {
+                src: `.lite.js`,
+                min: `.lite.min.js`
+            }
+        }))
+        .pipe(gulp.dest('dist'));
+
+    gutil.log('injector.js', 'moved to dist/');
 }
 
 gulp.task('dist', function (callback) {
@@ -63,7 +83,7 @@ gulp.task('dist', function (callback) {
     });
 });
 
-gulp.task('develop', function () {
+gulp.task('develop', function (callback) {
     webpack(webpackComponents).watch(1000, function (err, stats) {
         if (err) {
             throw new gutil.PluginError('webpack:components', err);
@@ -72,6 +92,10 @@ gulp.task('develop', function () {
         gutil.log('[webpack:components]', stats.toString({
             colors: true
         }));
+
+        if (!err) {
+            createDist();
+        }
     });
 });
 
