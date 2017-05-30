@@ -449,10 +449,6 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
             }
 
             return elems;
-        },
-
-        getElement: function getElement(selector) {
-            return document.querySelector(selector);
         }
     };
 })(window.FAI);

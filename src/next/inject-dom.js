@@ -6,7 +6,7 @@
          * Get all elements from DOM, return proper array instead of NodeList.
          * Browser suuport : https://caniuse.com/#feat=queryselector
          */
-        getElements: function (selector) {
+        getElements: function getElements(selector) {
             const elemMatches = document.querySelectorAll(selector) || [];
             let elems = [];
 
@@ -15,10 +15,6 @@
             }
 
             return elems;
-        },
-
-        getElement: function (selector) {
-            return document.querySelector(selector);
         }
     };
 })(window.FAI);
