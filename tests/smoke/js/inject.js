@@ -1,4 +1,4 @@
-var WebpackAssets = [{"name":"injector2.js","size":53267,"chunks":[0],"chunkNames":["injector2"],"emitted":true},{"name":"injector.js","size":281956,"chunks":[1],"chunkNames":["injector"],"emitted":true,"isOverSizeLimit":true}],
+var WebpackAssets = [{"name":"injector2.js","size":19356,"chunks":[0],"chunkNames":["injector2"],"emitted":true},{"name":"injector.js","size":281956,"chunks":[1],"chunkNames":["injector"],"emitted":true,"isOverSizeLimit":true}],
     src = '../../../' + WebpackAssets[0].name;
 
 function loadScript(url, callback)
