@@ -1,5 +1,7 @@
 /* global HTMLImports */
 
+window.WebComponents = window.WebComponents || {};
+
 (function (NS) {
     'use strict';
 
@@ -94,6 +96,85 @@
             }
 
             return link;
+        },
+
+        polyLoader: function (options) {
+            options = options || {};
+            options.base = options.base || '/webcomponents_';
+            options.chunks = options.chunks || false;
+
+            /* For (1) existence means `WebComponentsReady` will file, (2) WebComponents.ready == true means event has fired. */
+            // var name = 'webcomponents-loader.js';
+
+            /* Feature detect which polyfill needs to be imported. */
+            var polyfills = [],
+                fire,
+                newScript,
+                polySubString,
+                url;
+
+            if (!('import' in document.createElement('link'))) {
+                polyfills.push('hi');
+            }
+
+            if (!('attachShadow' in Element.prototype && 'getRootNode' in Element.prototype) ||
+                (window.ShadyDOM && window.ShadyDOM.force)) {
+                polyfills.push('sd');
+            }
+
+            if (!window.customElements || window.customElements.forcePolyfill) {
+                polyfills.push('ce');
+            }
+
+            /* NOTE: any browser that does not have template or ES6 features must load the full suite (called `lite` for legacy reasons) of polyfills. */
+            /* Edge has broken fragment cloning which means you cannot clone template.content */
+            if (!('content' in document.createElement('template')) || !window.Promise || !Array.from ||
+                !(document.createDocumentFragment().cloneNode() instanceof DocumentFragment)) {
+                polyfills = ['lite'];
+            }
+
+            if (polyfills.length) {
+                // var script = document.querySelector('script[src*="' + name +'"]');
+                newScript = document.createElement('script');
+
+                /* Load it from the right place. */
+                // var replacement = 'webcomponents-' + polyfills.join('-') + '.js';
+                // var url = script.src.replace(name, replacement);
+                polySubString = polyfills.join('_');
+
+                url = (Array.isArray(options.chunks) && typeof options.chunks[polySubString] === 'string') ? options.chunks[polySubString] : options.base + polySubString + '.js';
+
+                newScript.src = url;
+
+                // NOTE: this is required to ensure the polyfills are loaded before
+                // *native* html imports load on older Chrome versions. This *is* CSP
+                // compliant since CSP rules must have allowed this script to run.
+                // In all other cases, this can be async.
+                if (document.readyState === 'loading' && ('import' in document.createElement('link'))) {
+                    document.write(newScript.outerHTML);
+                } else {
+                    document.head.appendChild(newScript);
+                }
+            } else {
+                // Ensure `WebComponentsReady` is fired also when there are no polyfills loaded.
+                // however, we have to wait for the document to be in 'interactive' state,
+                // otherwise a rAF may fire before scripts in <body>
+                fire = function webComponentsFire() {
+                    requestAnimationFrame(function webComponentsRAF() {
+                        window.WebComponents.ready = true;
+                        document.dispatchEvent(new CustomEvent('WebComponentsReady', {bubbles: true}));
+                    });
+                };
+
+                if (document.readyState !== 'loading') {
+                    fire();
+                } else {
+                    document.addEventListener('readystatechange', function wait() {
+                        fire();
+                        document.removeEventListener('readystatechange', wait);
+                    });
+                }
+            }
         }
     };
 })(window.FAI);

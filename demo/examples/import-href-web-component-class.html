@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>CNN Component Demos</title>
+    </head>
+    <body>
+
+<h1>Dynamic HTML import  and insertion of component class</h1>
+
+        <div id="root"></div>
+        
+        <script src="/vendor.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                FAI.WC.importHref('/components/gallery.html', function galleryComponent() {
+                    let Gallery = customElements.get('cnn-gallery');
+                    let gallery = new Gallery({});
+                    
+                    document.querySelector('#root').appendChild(gallery);
+                    
+                    gallery.update('more images');
+                });     
+            });
+        </script>
+    </body>
+</html>

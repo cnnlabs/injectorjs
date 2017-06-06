@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>CNN Component Demos</title>
+    </head>
+    <body>
+
+<h1>Dynamic HTML import of custom elements</h1>
+
+        <share-bar></share-bar>
+
+        <script src="/vendor.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                FAI.WC.importHref('/components/share-bar.html', function shareBarComponent() {
+                    console.log('share bar loaded');   
+                });
+            });
+        </script>
+    </body>
+</html>

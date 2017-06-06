@@ -23,6 +23,10 @@ function createDist() {
         }))
         .pipe(gulp.dest('assets/js'));
 
+    /* files for webcomponents */
+    gulp.src('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js')
+        .pipe(gulp.dest('dist/webcomponents'));
+
     /* files for dist */
     gulp.src('src/injector.js')
         .pipe(minify({

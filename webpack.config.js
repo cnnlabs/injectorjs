@@ -8,11 +8,16 @@ let envWebpack,
             injector: './src/entries/injector.standalone.js',
             injector2: [
                 './src/next/index.js'
-            ]
+            ],
+            webcomponents_lite: '@webcomponents/webcomponentsjs',
+            webcomponents_hi_ce: '@webcomponents/webcomponentsjs/webcomponents-hi-ce.js',
+            webcomponents_hi_sd_ce: '@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js',
+            webcomponents_hi: '@webcomponents/webcomponentsjs/webcomponents-hi.js',
+            webcomponents_sd_ce: '@webcomponents/webcomponentsjs/webcomponents-sd-ce.js'
         },
         output: {
             path: path.join(__dirname, '/bundles/'),
-            filename: (process.env.NODE_ENV === 'development') ? '[name].js' : '[name].[chunkhash:10].js'
+            filename: (process.env.NODE_ENV === 'development') ? '[name].js' : '[name].[chunkhash:8].js'
         },
         module: {
             rules: [
@@ -33,7 +38,7 @@ let envWebpack,
             ]
         },
         plugins: [
-            new webpack.optimize.AggressiveMergingPlugin(),
+            new webpack.IgnorePlugin(/vertx/),
 
             new webpack.DefinePlugin({
                 'process.env': {

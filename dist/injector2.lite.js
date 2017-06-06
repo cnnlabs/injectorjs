@@ -63,26 +63,32 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(3);
-__webpack_require__(7);
-__webpack_require__(5);
-__webpack_require__(6);
-__webpack_require__(4);
+__webpack_require__(10);
+__webpack_require__(13);
+__webpack_require__(12);
+__webpack_require__(11);
 
 /***/ }),
-/* 1 */,
 /* 2 */,
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93,7 +99,7 @@ window.FAI = window.FAI || {};
 window.FAI.bundleHost = window.FAI.bundleHost || '/';
 
 /***/ }),
-/* 4 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -426,35 +432,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 })(window.FAI);
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-(function (NS) {
-    'use strict';
-
-    NS.DOM = {
-        /**
-         * Get all elements from DOM, return proper array instead of NodeList.
-         * Browser suuport : https://caniuse.com/#feat=queryselector
-         */
-        getElements: function getElements(selector) {
-            var elemMatches = document.querySelectorAll(selector) || [];
-            var elems = [];
-
-            for (var i = 0; i < elemMatches.length; i++) {
-                elems.push(elemMatches[i]);
-            }
-
-            return elems;
-        }
-    };
-})(window.FAI);
-
-/***/ }),
-/* 6 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,7 +540,7 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 })(window.FAI);
 
 /***/ }),
-/* 7 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -571,15 +549,31 @@ window.FAI.bundleHost = window.FAI.bundleHost || '/';
 (function (NS) {
     'use strict';
 
-    NS.Utils = {};
+    NS.Utils = {
+        /**
+         * Get all elements from DOM, return proper array instead of NodeList.
+         * Browser suuport : https://caniuse.com/#feat=queryselector
+         */
+        getElements: function getElements(selector) {
+            var elemMatches = document.querySelectorAll(selector) || [];
+
+            var elems = [];
+
+            for (var i = 0; i < elemMatches.length; i++) {
+                elems.push(elemMatches[i]);
+            }
+
+            return elems;
+        }
+    };
 })(window.FAI);
 
 /***/ }),
-/* 8 */,
-/* 9 */
+/* 14 */,
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(0);
+module.exports = __webpack_require__(1);
 
 
 /***/ })
