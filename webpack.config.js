@@ -43,7 +43,7 @@ let envWebpack,
             })
         ],
         devServer: {
-            contentBase: path.join(__dirname, 'demos'),
+            contentBase: path.join(__dirname, 'demo'),
             compress: (process.env.NODE_ENV === 'development'),
             port: process.env.PORT || 5000,
             host: '0.0.0.0',
