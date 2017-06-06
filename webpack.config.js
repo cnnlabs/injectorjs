@@ -1,6 +1,20 @@
 const path = require('path'),
     webpack = require('webpack');
 
+function mergeObject(obj, source) {
+    let prop;
+
+    for (prop in source) {
+        if (typeof obj[prop] === 'undefined') {
+            obj[prop] = source[prop];
+        } else if (typeof obj[prop] === 'object' && !Array.isArray(obj[prop]) && !Array.isArray(source[prop])) {
+            obj[prop] = mergeObject(obj[prop], source[prop]);
+        }
+    }
+
+    return obj;
+}
+
 let envWebpack,
     webpackConfig = {
         cache: true,
@@ -48,7 +62,10 @@ let envWebpack,
             })
         ],
         devServer: {
-            contentBase: path.join(__dirname, 'demo'),
+            contentBase: [
+                path.join(__dirname, 'dist'),
+                path.join(__dirname, 'demo')
+            ],
             compress: (process.env.NODE_ENV === 'development'),
             port: process.env.PORT || 5000,
             host: '0.0.0.0',
@@ -57,11 +74,14 @@ let envWebpack,
         }
     };
 
-
 envWebpack = (process.env.NODE_ENV === 'development') ? require('./exports.webpack.dev.js')(webpack) :
     require('./exports.webpack.prod.js')(webpack);
 
 if (envWebpack) {
+    if (typeof envWebpack.entry !== 'undefined') {
+        webpackConfig.entry = mergeObject(webpackConfig.entry, envWebpack.entry);
+    }
+
     if (Array.isArray(envWebpack.plugins)) {
         webpackConfig.plugins = (webpackConfig.plugins).concat(envWebpack.plugins);
     }

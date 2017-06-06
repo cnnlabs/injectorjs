@@ -1,31 +1,5 @@
 <template id="share-bar">
   <p>I'm in Shadow DOM for a share bar. My markup was stamped from a &lt;template&gt;.</p>
 </template>
-
-<script>
-/**
- * @todo convert to ES5 for older browsers
- */
-// Create a class for the element
-class shareBar extends HTMLElement {
-  constructor() {
-    // Always call super first in constructor
-    super();
-    
-    // var currentDocument =  document.head.querySelector('link[href="/components/share-bar.html"][import-href]');
-    var currentDocument = document.currentScript.ownerDocument;
-
-    const t = currentDocument.querySelector('#share-bar');
-    const instance = t.content.cloneNode(true);
-    
-    // Create a shadow root
-    var shadow = this.attachShadow({mode: 'open'});
-
-    // Add the link to the shadow root.
-    shadow.appendChild(instance);
-  }
-}
-
-// Define the new element
-customElements.define('share-bar', shareBar);
-</script>
+<script src="/webcomponents/custom-elements-es5-adapter.js"></script>
+<script src="/share_bar.js"></script>

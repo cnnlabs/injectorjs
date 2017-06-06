@@ -4,16 +4,17 @@
     </head>
     <body>
 
-<h1>Dynamic HTML import of custom elements</h1>
+        <h1>Web Component with Template</h1>
 
         <share-bar></share-bar>
-
-        <script src="/vendor.js"></script>
+        
+        <script src="/webcomponents_lite.js"></script>
+        <script src="/injector2.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function(event) {
                 FAI.WC.importHref('/components/share-bar.html', function shareBarComponent() {
-                    console.log('share bar loaded');   
-                });
+                    console.log('Share bar component loaded');
+                });     
             });
         </script>
     </body>

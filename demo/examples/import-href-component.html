@@ -4,15 +4,17 @@
     </head>
     <body>
 
-<h1>Dynamic HTML import  and insertion of component class</h1>
+        <h1>Dynamic HTML import  and insertion of component</h1>
 
         <div id="root"></div>
         
-        <script src="/vendor.js"></script>
+        <script src="/webcomponents_lite.js"></script>
+        <script src="/injector2.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function(event) {
                 FAI.WC.importHref('/components/gallery.html', function galleryComponent() {
                     let Gallery = customElements.get('cnn-gallery');
+
                     let gallery = new Gallery({});
                     
                     document.querySelector('#root').appendChild(gallery);
