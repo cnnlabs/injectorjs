@@ -1,4 +1,5 @@
 const path = require('path'),
+    AssetsPlugin = require('assets-webpack-plugin'),
     webpack = require('webpack');
 
 function mergeObject(obj, source) {
@@ -53,6 +54,14 @@ let envWebpack,
         },
         plugins: [
             new webpack.IgnorePlugin(/vertx/),
+
+            new AssetsPlugin({
+                path: path.join(__dirname, '/dist/'),
+                processOutput: function (assets) {
+                    return 'window.FAI = window.FAI || {};window.FAI.bundleMap = ' + JSON.stringify(assets)
+                },
+                filename: 'manifest.js'
+            }),
 
             new webpack.DefinePlugin({
                 'process.env': {

@@ -100,12 +100,11 @@ window.WebComponents = window.WebComponents || {};
 
         polyLoader: function (options) {
             options = options || {};
-            options.base = options.base || '/webcomponents_';
+            options.pathBase = options.pathBase || '/webcomponents_';
+            options.chunkBase = options.chunkBase || 'webcomponents_';
             options.chunks = options.chunks || false;
 
             /* For (1) existence means `WebComponentsReady` will file, (2) WebComponents.ready == true means event has fired. */
-            // var name = 'webcomponents-loader.js';
-
             /* Feature detect which polyfill needs to be imported. */
             var polyfills = [],
                 fire,
@@ -138,11 +137,9 @@ window.WebComponents = window.WebComponents || {};
                 newScript = document.createElement('script');
 
                 /* Load it from the right place. */
-                // var replacement = 'webcomponents-' + polyfills.join('-') + '.js';
-                // var url = script.src.replace(name, replacement);
                 polySubString = polyfills.join('_');
 
-                url = (Array.isArray(options.chunks) && typeof options.chunks[polySubString] === 'string') ? options.chunks[polySubString] : options.base + polySubString + '.js';
+                url = (options.chunks !== false && typeof options.chunks[options.chunkBase + polySubString] !== 'undefined') ? options.pathBase + options.chunks[options.chunkBase + polySubString].js : options.pathBase + polySubString + '.js';
 
                 newScript.src = url;
 
