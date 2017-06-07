@@ -57,6 +57,9 @@ function createDist() {
         }))
         .pipe(gulp.dest('dist'));
 
+    gulp.src('bundles/webcomponents_*.js')
+        .pipe(gulp.dest('dist/webcomponents/'));
+
     gutil.log('injector.js', 'moved to dist/');
 }
 

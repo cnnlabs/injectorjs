@@ -32,7 +32,7 @@ let envWebpack,
         },
         output: {
             path: path.join(__dirname, '/bundles/'),
-            filename: (process.env.NODE_ENV === 'development') ? '[name].js' : '[name].[chunkhash:8].js'
+            filename: '[name].js'
         },
         module: {
             rules: [
@@ -58,7 +58,7 @@ let envWebpack,
             new AssetsPlugin({
                 path: path.join(__dirname, '/dist/'),
                 processOutput: function (assets) {
-                    return 'window.FAI = window.FAI || {};window.FAI.bundleMap = ' + JSON.stringify(assets)
+                    return 'window.FAI = window.FAI || {};window.FAI.bundleMap = ' + JSON.stringify(assets);
                 },
                 filename: 'manifest.js'
             }),
