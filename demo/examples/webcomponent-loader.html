@@ -13,20 +13,19 @@
         <script src="/manifest.js"></script>
         <script src="/injector2.js"></script>
         <script>
-            console.log(window.FAI.bundleMap);
-
             window.addEventListener('WebComponentsReady', function() {
                 console.log('Polyfills ready');
 
                 FAI.WC.importHref('/components/lazy-images.html', function lazyImageComponent() {
-                    console.log('lazy image loaded');   
+                    console.log('lazy image loaded');
                 });
             });
 
             // Trigger conditional polyfills for Web Components
             FAI.WC.polyLoader({
                 pathBase: '/',
-                chunks: window.FAI.bundleMap
+                chunks: window.FAI.bundleMap,
+                adapterSrc: '/webcomponents/custom-elements-es5-adapter.js'
             });
         </script>
     </body>

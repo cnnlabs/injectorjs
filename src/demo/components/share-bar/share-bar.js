@@ -1,7 +1,7 @@
 /* global ShadyCSS */
 
 let isShady = (typeof ShadyCSS !== 'undefined'),
-    template = document.currentScript.ownerDocument.querySelector('#share-bar');
+    template = (document._currentScript || document.currentScript).ownerDocument.querySelector('#share-bar');
 
 if (isShady) {
     ShadyCSS.prepareTemplate(template, 'share-bar');

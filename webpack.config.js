@@ -79,7 +79,11 @@ let envWebpack,
             port: process.env.PORT || 5000,
             host: '0.0.0.0',
             inline: false,
-            disableHostCheck: true
+            disableHostCheck: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+            }
         }
     };
 

@@ -98,20 +98,49 @@ window.WebComponents = window.WebComponents || {};
             return link;
         },
 
+        /**
+         * Method for loading necessary polyfills to support web components
+         *
+         * Adpated from - https://github.com/webcomponents/webcomponentsjs/blob/master/webcomponents-loader.js
+         */
         polyLoader: function (options) {
             options = options || {};
-            options.pathBase = options.pathBase || '/webcomponents_';
+            options.pathBase = options.pathBase || '/';
             options.chunkBase = options.chunkBase || 'webcomponents_';
             options.chunks = options.chunks || false;
+            options.adapterSrc = options.adapterSrc || false;
 
-            /* For (1) existence means `WebComponentsReady` will file, (2) WebComponents.ready == true means event has fired. */
-            /* Feature detect which polyfill needs to be imported. */
+            var s,
+                self = this;
+
+            /* load es5 adapter for es6 capable browsers and not IE11 */
+            if (options.adapterSrc && !(/Trident/.test(navigator.userAgent))) {
+                s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = options.adapterSrc;
+
+                s.addEventListener('load', function () {
+                    self.loadComponentPolyFill(options);
+                }, false);
+
+                document.head.appendChild(s);
+            } else {
+                self.loadComponentPolyFill(options);
+            }
+        },
+
+        loadComponentPolyFill: function (options) {
+            options = options || {};
+
             var polyfills = [],
                 fire,
                 newScript,
                 polySubString,
                 url;
 
+            /* For (1) existence means `WebComponentsReady` will file, (2) WebComponents.ready == true means event has fired. */
+            /* Feature detect which polyfill needs to be imported. */
             if (!('import' in document.createElement('link'))) {
                 polyfills.push('hi');
             }
@@ -139,7 +168,7 @@ window.WebComponents = window.WebComponents || {};
                 /* Load it from the right place. */
                 polySubString = polyfills.join('_');
 
-                url = (options.chunks !== false && typeof options.chunks[options.chunkBase + polySubString] !== 'undefined') ? options.pathBase + options.chunks[options.chunkBase + polySubString].js : options.pathBase + polySubString + '.js';
+                url = (options.chunks !== false && typeof options.chunks[options.chunkBase + polySubString] !== 'undefined') ? options.pathBase + options.chunks[options.chunkBase + polySubString].js : options.pathBase + options.chunkBase + polySubString + '.js';
 
                 newScript.src = url;
 
