@@ -1,0 +1,24 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": false,
+            "modules": true
+        }
+    },
+    "rules": {
+        "indent":           [2, 4, {"SwitchCase": 1}],
+        "linebreak-style":  [2, "unix"],
+        "no-console":        0,
+        "quotes":           ["error", "single", { "allowTemplateLiterals": true }],
+        "semi":             [2, "always"],
+        "comma-dangle":     ["error", "never"],
+        "max-len":          ["off"]
+    },
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    }
+}

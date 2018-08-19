@@ -23,6 +23,10 @@ function createDist() {
         }))
         .pipe(gulp.dest('assets/js'));
 
+    /* files for webcomponents */
+    gulp.src('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js')
+        .pipe(gulp.dest('dist/webcomponents'));
+
     /* files for dist */
     gulp.src('src/injector.js')
         .pipe(minify({
@@ -33,7 +37,30 @@ function createDist() {
         }))
         .pipe(gulp.dest('dist'));
 
-    gutil.log('src/injector.js', 'moved to dist/');
+    /* bundles that are hosted */
+    gulp.src('bundles/injector2.js')
+        .pipe(minify({
+            ext: {
+                src: `.${pkg.version}.js`,
+                min: `.${pkg.version}.min.js`
+            }
+        }))
+        .pipe(gulp.dest('assets/js'));
+
+    /* files for dist */
+    gulp.src('bundles/injector2.js')
+        .pipe(minify({
+            ext: {
+                src: `.lite.js`,
+                min: `.lite.min.js`
+            }
+        }))
+        .pipe(gulp.dest('dist'));
+
+    gulp.src('bundles/webcomponents_*.js')
+        .pipe(gulp.dest('dist/webcomponents/'));
+
+    gutil.log('injector.js', 'moved to dist/');
 }
 
 gulp.task('dist', function (callback) {
@@ -63,6 +90,22 @@ gulp.task('dist', function (callback) {
     });
 });
 
+gulp.task('develop', function (callback) {
+    webpack(webpackComponents).watch(1000, function (err, stats) {
+        if (err) {
+            throw new gutil.PluginError('webpack:components', err);
+        }
+
+        gutil.log('[webpack:components]', stats.toString({
+            colors: true
+        }));
+
+        if (!err) {
+            createDist();
+        }
+    });
+});
+
 /* linting */
 gulp.task('lint', function () {
     const src = ['./src/**/*.js', './webpack.config.js'];
@@ -72,7 +115,7 @@ gulp.task('lint', function () {
         gulp.src(src)
             .pipe(jscs())
             .pipe(jscs.reporter())
-            .pipe(eslint())
+            .pipe(eslint({ configFile: '.eslint-es6.json' }))
             .pipe(eslint.failOnError())
             .on('error', (error) => {
                 gutil.log('ERROR:', error);

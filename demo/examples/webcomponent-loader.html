@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>CNN Component Demos</title>
+    </head>
+    <body>
+
+        <h1>Web Component Loader</h1>
+
+        <p>Dynamically load the needed polyfills for web components</p>
+
+        <lazy-image src="//i2.cdn.cnn.com/cnnnext/dam/assets/151127155823-jean-paul-gaultier-haute-couture-aw15-2-medium-plus-169.jpg" srcset="//i2.cdn.cnn.com/cnnnext/dam/assets/151127155823-jean-paul-gaultier-haute-couture-aw15-2-large-169.jpg 480w, //i2.cdn.cnn.com/cnnnext/dam/assets/151127155823-jean-paul-gaultier-haute-couture-aw15-2-exlarge-169.jpg 800w, //i2.cdn.cnn.com/cnnnext/dam/assets/151127155823-jean-paul-gaultier-haute-couture-aw15-2-super-169.jpg 1400w"></lazy-image>
+
+        <script src="/manifest.js"></script>
+        <script src="/injector2.js"></script>
+        <script>
+            window.addEventListener('WebComponentsReady', function() {
+                console.log('Polyfills ready');
+
+                FAI.WC.importHref('/components/lazy-images.html', function lazyImageComponent() {
+                    console.log('lazy image loaded');
+                });
+            });
+
+            // Trigger conditional polyfills for Web Components
+            FAI.WC.polyLoader({
+                pathBase: '/',
+                chunks: window.FAI.bundleMap,
+                adapterSrc: '/webcomponents/custom-elements-es5-adapter.js'
+            });
+        </script>
+    </body>
+</html>

@@ -1,1 +1,1 @@
-require('imports?jQuery=jquery!../../src/injector.js');
+require('imports-loader?jQuery=jquery!../../src/injector.js');
